@@ -1,4 +1,4 @@
-import { useApi } from './../hooks/api.hook.js'
+import { useApi } from './../hooks/useApi.hook'
 import { useParams } from "react-router";
 
 
