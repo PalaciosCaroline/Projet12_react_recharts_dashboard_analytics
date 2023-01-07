@@ -19,10 +19,10 @@ function App() {
   ReactDOM.render(
     <BrowserRouter>
       <Navhorizontale />
-      <Wrapper>
-        <Navverticale />
-        <Router />
-      </Wrapper>
+     
+      <Navverticale />
+      <Router />
+     
     </BrowserRouter>,
     document.getElementById("root")
   ); 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import iconnatation from './../assets/icon_natation.png'
 import iconalter from './../assets/icon_alter.png'
 import iconzen from './../assets/icon_zen.png'
@@ -10,6 +10,10 @@ import iconvelo from './../assets/icon_velo.png'
 
 
 const HeaderVertical = styled.header`
+position:fixed;
+top:0;
+height:100vh;
+z-index:1;
     width: 117px;
     background-color: ${palette.colorHeader};
     display:flex;
@@ -22,9 +26,9 @@ const Footer = styled.footer`
     font-size:0.8rem;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
-    margin-left:auto;
-    padding-top:59px;
-    padding-left:42px;
+    margin-:auto;
+    bottom:59px;
+    position: absolute;
     color: #fff;
 `
 const LiHeaderVertical = styled.li`
@@ -33,7 +37,7 @@ const LiHeaderVertical = styled.li`
 `
 const Nav = styled.nav`
     margin: auto;
-    padding-bottom:40px;
+    // padding-bottom:40px;
 `
 
 export default function Navverticale() {
@@ -43,26 +47,25 @@ export default function Navverticale() {
       <Nav>
         <ul>
           <LiHeaderVertical>
-                <a href="/">
+                <NavLink to="/">
                 <img src={iconzen} alt="méditation" />
-                </a>
+                </NavLink>
             </LiHeaderVertical>
             <LiHeaderVertical>
-                <a href="/">
+                <NavLink href="/">
                 <img src={iconnatation} alt="natation" />
-                </a>
+                </NavLink>
             </LiHeaderVertical>
             <LiHeaderVertical>
-                <a href="/">
+                <NavLink href="/">
                 <img src={iconvelo} alt="velo" />
-                </a>
+                </NavLink>
             </LiHeaderVertical>
             <LiHeaderVertical>
-                <a href="/">
+                <NavLink href="/">
                 <img src={iconalter} alt="musculation" />
-                </a>
+                </NavLink>
             </LiHeaderVertical>
-            
         </ul>
       </Nav>
       <Footer><p>Copiryght, SportSee 2020</p></Footer>

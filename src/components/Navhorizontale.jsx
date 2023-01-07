@@ -3,17 +3,22 @@ import iconlogo from './../assets/logo_sportseeSVG.svg'
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
+const Header = styled.header`
+position: relative;
+  z-index:2;
+  
+  width:100%;
+`
+ 
 const UlHeader = styled.ul`
   font-size: 1.4rem;
-  padding: 20px 87px 20px 28px;
   height: 51px;
-  // position: relative;
-  // z-index:1;
   justify-content: space-between;
   align-items: center;
   display: flex;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: ${palette.colorHeader};
+  padding: 20px 8% 20px 2%;
 `
 
 const Logohome = styled.a`
@@ -29,16 +34,16 @@ const LinkHeader = styled.a`
 
 export default function Navhorizontale() {
   return (
-    <header>
+    <Header>
       <nav>
         <UlHeader>
           <li>
-            <Logohome href="#">
+            <Logohome href="/">
               <img src={iconlogo} alt="" />
             </Logohome>
           </li>
           <li>
-            <LinkHeader href="/" end>
+            <LinkHeader href="/" end="true">
               Accueil
             </LinkHeader>
           </li>
@@ -53,6 +58,6 @@ export default function Navhorizontale() {
           </li>
         </UlHeader>
       </nav>
-    </header>
+    </Header>
   )
 }

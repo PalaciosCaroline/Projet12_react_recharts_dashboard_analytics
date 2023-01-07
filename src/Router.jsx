@@ -8,7 +8,7 @@ export default function Router() {
     return(
         <Routes>
             <Route index element={<Accueil/>}/>
-            <Route path="/user/:id" element={<Dashboard/>} />
+            <Route path="/user/:id" end="true" element={<Dashboard/>} />
             <Route path="*" element={<Erreur404 />} />
         </Routes>        
         )
