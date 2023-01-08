@@ -116,7 +116,6 @@ export default class DailyActivity extends PureComponent {
     font-size:0.5rem;
     text-align : center;
     padding:8px 0 8px 0;
-  outline:none;
     
   `
 
@@ -126,11 +125,4 @@ export default class DailyActivity extends PureComponent {
   const SpanTooltip2 = styled.div`
     height:50%;
   `
-  // ResponsiveContainer = styled.div`
-  //   align-self: end;
-  // `
-  // const BoxDaily = styled.div`
-  //   display: flex;
-  //   flex-position: column;
-  //   justify-content: space-between;
-  // `
+ 
