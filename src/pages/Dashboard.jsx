@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 // import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import KeyfigureCard from '../components/KeyfigureCard';
 import DailyActivity from '../components/DailyActivity';
+import Objectifs from '../components/Objectifs';
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
@@ -88,7 +89,9 @@ export default function Dashboard() {
               </Activity>
 
               <SessionDuring>
+                <Objectifs>
 
+                </Objectifs>
               </SessionDuring>
 
               <Keyfigures>
@@ -110,7 +113,7 @@ export default function Dashboard() {
 const Wrapped = styled.div`
   display: flex;
   flex-direction : column;
-  padding:77px 9% 0 224px;
+  padding:72px 9% 0 224px;
   height: 100%;
   width:100%;
   @media (max-width: 1300px) {
@@ -127,10 +130,11 @@ const Name = styled.span`
   color: ${palette.colorName};
 `
 const BoxResult = styled.section`
-  margin-bottom: 55px;
+  margin-top:50px;
+  // margin-bottom: 45px;
   display: grid;
-grid-template-columns: repeat(4, 1fr);
-grid-template-rows: repeat(100, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(100, 1fr);
   height: 100%;
   @media (max-width: 1100px) {
     grid-template-columns: 1fr;
@@ -140,22 +144,23 @@ grid-template-rows: repeat(100, 1fr);
 `
 
 const Activity = styled.section`
-color: rgba(0,0,0,0.2);
-grid-column: 1 / 4;
-  grid-row: 1 / 55;
-margin-bottom:28px;
-min-height: 320px;
-background-color:rgba(251, 251, 251, 1);
+  color: rgba(0,0,0,0.2);
+  grid-column: 1 / 4;
+    grid-row: 1 / 55;
+  margin-bottom:30px;
+  height: 320px;
+  background-color:rgba(251, 251, 251, 1);
 @media (max-width: 1100px) {
   grid-row: 1/2;
 }
 `
 const SessionDuring = styled.section`
-color: rgba(0,0,0,0.2);
-grid-column: 1 / 4;
-grid-row: 55 / 100;
-min-height:263px;
-background-color:red;
+  color: rgba(0,0,0,0.2);
+  grid-column: 1 / 4;
+  grid-row: 55 / 100;
+  height:263px;
+  background-color:red;
+  display: flex;
 @media (max-width: 1100px) {
   grid-row: 2/3;
   gap:20px;
@@ -182,4 +187,8 @@ const Keyfigures = styled.section`
     gap:20px;
   }
 `
+// DailyActivity = styled.section`
+//   display:flex;
+//   flex-direction: column;
 
+// `

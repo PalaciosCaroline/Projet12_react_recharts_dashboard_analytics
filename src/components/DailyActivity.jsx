@@ -47,44 +47,53 @@ const USER_ACTIVITY = [
     }
 ]
 
-function renderTooltip() {
+function TooltipTag({active,payload}) {
+  if(active){
     return(
-            <>
-           
-            </>
-        )
-}
+          <BoxTooltipTag>
+              <SpanTooltip1>{payload[0].value}Kg</SpanTooltip1>
+              <br />
+              <br />
+              <SpanTooltip2>{payload[1].value}Kcal</SpanTooltip2>
+          </BoxTooltipTag>
+      )}
+      else{
+        return;
+      }
+  }
 
 export default class DailyActivity extends PureComponent {
-
+  
     render() {
       return (
         <>
         <TitleActivity2>Activité quotidienne</TitleActivity2>
-        <ResponsiveContainer width="100%" height="70%">
+        <ResponsiveContainer width="100%" height="50%">
           <BarChart
             // width={}
-            height={130}
-            barCategoryGap={53}
+            height={145}
+            barCategoryGap={1}
             barGap={8}
-            maxBarSize={130}
+            maxBarSize={145}
             data={USER_ACTIVITY}
             margin={{
               top: 30,
-              right: 30,
+              right: 20,
               left: 30,
-              bottom: 20,
+              bottom: 0,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="1 1" />
             <XAxis dataKey="day" />
-            <YAxis dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']}/>
-            <Tooltip offset={20} 
-               content={renderTooltip}
+            <YAxis dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
+            <YAxis dataKey="calories" orientation="right" domain={['dataMin', 'dataMax']}  type="number"/>
+            <Tooltip offset={23} 
+               content={<TooltipTag/>}
+               wrapperStyle={{ background: 'rgba(230, 0, 0, 1)', width: '39px', height:'63px', color:'#fff' , outline:"none"}} 
             />
             <Legend verticalAlign="top" height={36}/>
-            <Bar dataKey="kilogram" fill="rgba(40, 45, 48, 1)" barSize={6} />
-            <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" barSize={6} />
+            <Bar dataKey="kilogram" fill="rgba(40, 45, 48, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
+            <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
           </BarChart>
         </ResponsiveContainer>
         </>
@@ -95,8 +104,33 @@ export default class DailyActivity extends PureComponent {
 
   const TitleActivity2 = styled.h2`
   margin-top=24px;
-  font-size:1.5rem;
-  color:
-  rgba(32, 37, 58, 1);
+  margin-left:32px;
+  font-size:0.9rem;
+  font-weight:500;
+  color: rgba(32, 37, 58, 1);
+  margin-bottom:100px;
 
   `
+
+  const BoxTooltipTag = styled.div`
+    font-size:0.5rem;
+    text-align : center;
+    padding:8px 0 8px 0;
+  outline:none;
+    
+  `
+
+  const SpanTooltip1 = styled.div`
+    height:50%;
+  `
+  const SpanTooltip2 = styled.div`
+    height:50%;
+  `
+  // ResponsiveContainer = styled.div`
+  //   align-self: end;
+  // `
+  // const BoxDaily = styled.div`
+  //   display: flex;
+  //   flex-position: column;
+  //   justify-content: space-between;
+  // `
