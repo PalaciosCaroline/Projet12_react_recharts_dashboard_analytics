@@ -43,6 +43,13 @@ export default function Dashboard() {
 
               </SessionDuring>
 
+              <Keyfigures>
+               <Article></Article>
+               <Article></Article>
+               <Article></Article>
+               <Article></Article>
+
+              </Keyfigures>
 
             </BoxResult>
 
@@ -55,7 +62,7 @@ export default function Dashboard() {
 const Wrapped = styled.div`
   display: flex;
   flex-direction : column;
-  padding:68px 9% 88px 224px;
+  padding:68px 9% 0 224px;
   height: 100%;
   width:100%;
 `
@@ -70,23 +77,48 @@ const Name = styled.span`
 `
 const BoxResult = styled.section`
   margin-bottom: 55px;
-  display:grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 100fr; 
-  grid-gap:25px;
+  // display:grid;
+  // grid-template-columns: 3fr 1fr;
+  // grid-template-rows: 100fr; 
+  // grid-gap:25px;
+  display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: repeat(100, 1fr);
+// grid-column-gap: 20px;
+// grid-row-gap: 20px;
   height: 100%;
   
 `
 
-const Activity = styled.article`
+const Activity = styled.section`
 color: rgba(0,0,0,0.2);
-grid: 1/1/4/55;
+grid-column: 1 / 4;
+  grid-row: 1 / 55;
+margin-bottom:28px;
 min-height: 320px;
 background-color:blue;
 `
-const SessionDuring = styled.article`
+const SessionDuring = styled.section`
 color: rgba(0,0,0,0.2);
-grid: 1/55/4/101;
-min-height:320px;
+grid-column: 1 / 4;
+  grid-row: 55 / 100;
+min-height:263px;
 background-color:red;
+`
+
+const Keyfigures = styled.section`
+margin-left: 31px;
+  grid-column: 4 / 5;
+  grid-row: 1 / 100;
+  background-color: green;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+`
+
+const Article = styled.article`
+  width:100%;
+  height:124px;
+  background: grey;
+
 `
