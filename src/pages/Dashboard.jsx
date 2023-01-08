@@ -1,5 +1,6 @@
 import React from 'react'
 // import { useApi } from './../hooks/useApi.hook'
+// import {getFirstName} from './../mook/ApiData.mook'
 import { useParams } from "react-router";
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
@@ -23,10 +24,13 @@ export default function Dashboard() {
 
     //   console.log(datasUser)
     
+  
+
 
     return(
+    
         <Wrapped>
-          <Title>Bonjour<Name>{id ? id : ""}</Name></Title>
+          <Title>Bonjour<Name>{id}</Name></Title>
         
           <p>Félicitations ! Vous avez explosé vos objectifs hier
                 &nbsp;👏</p>
@@ -38,9 +42,12 @@ export default function Dashboard() {
               <SessionDuring>
 
               </SessionDuring>
+
+
             </BoxResult>
 
         </Wrapped>
+ 
         )
 
 }
@@ -64,8 +71,8 @@ const Name = styled.span`
 const BoxResult = styled.section`
   margin-bottom: 55px;
   display:grid;
-  grid-template-columns: repeat (4, 1fr);
-  grid-template-rows: repeat (100, 1fr); 
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 100fr; 
   grid-gap:25px;
   height: 100%;
   
@@ -73,11 +80,13 @@ const BoxResult = styled.section`
 
 const Activity = styled.article`
 color: rgba(0,0,0,0.2);
-grid: 1/1/4/65;
+grid: 1/1/4/55;
+min-height: 320px;
 background-color:blue;
 `
 const SessionDuring = styled.article`
 color: rgba(0,0,0,0.2);
-grid: 1/1/4/65;
-background-color:blue;
+grid: 1/55/4/101;
+min-height:320px;
+background-color:red;
 `

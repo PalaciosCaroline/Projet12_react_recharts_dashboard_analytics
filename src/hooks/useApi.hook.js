@@ -16,7 +16,7 @@ export const callApiWithAxios = async ({
       ...passedHeaders
     }
   };
-  const path = [apiUrl, userId, namespace,].filter(Boolean).join("/");
+  const path = [apiUrl, userId, namespace].filter(Boolean).join("/");
   return await Axios({
     method,
     url: path,
