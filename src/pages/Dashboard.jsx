@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 // import { Navigate } from 'react-router';
 // import { useFetch } from './../hooks/useApi.hook'
+// import { getUserById, getDataInfos } from '../mock/ApiData.mock';
 
 import { useParams } from "react-router";
 import KeyfigureCard from '../components/KeyfigureCard';
@@ -12,9 +13,10 @@ import BoxRadar from './../components/BoxRadar';
 import BoxScore  from '../components/BoxScore';
 
 export default function Dashboard() {
-
+// const [dataUserInfos, setDataUserInfos] = useState([])
   // const [dataUserInfos,setDataUserInfos] = useState([])
     let { id } = useParams();
+
     // let navigate = Navigate();
 
     // const user = () => {
@@ -29,6 +31,12 @@ export default function Dashboard() {
     //   });
 
     //   console.log(datasUser)
+
+
+
+// let data = getUserById(12)
+
+
 
 
     let KeyData = {

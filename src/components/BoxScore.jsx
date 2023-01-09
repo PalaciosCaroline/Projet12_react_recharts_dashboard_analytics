@@ -53,10 +53,8 @@ export default function BoxScore() {
           // fill={{color:'red'}}
          
           track={{background: '#fff'}}
-          // background={{ fill: 'red' }}
             minAngle={15}
             // label={{ position: 'insideStart', fill: 'red' }}
-
             clockWise
             dataKey="todayScore"
           />

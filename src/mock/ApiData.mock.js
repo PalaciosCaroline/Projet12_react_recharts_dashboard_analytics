@@ -21,6 +21,7 @@ export const getUserActivityById = id => USER_ACTIVITY
     .filter(userActivity => userActivity.userId === id)
     .shift()
 
+    
 
 /**
  * @param {number} id 

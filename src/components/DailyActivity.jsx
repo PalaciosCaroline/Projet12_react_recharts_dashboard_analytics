@@ -1,12 +1,16 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { useParams } from "react-router";
+import { getUserActivityById } from '../mock/ApiData.mock';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import styled from 'styled-components'
+import styled from 'styled-components';
+
 
 // export default function DailyActivity({data}) {
 //   return (
 //     <BarChart></BarChart>
 //   )
 // }
+
 
 
 const USER_ACTIVITY = [
@@ -63,6 +67,8 @@ function TooltipTag({active,payload}) {
   }
 
 export default function DailyActivity() {
+
+
 
       return (
         <>
