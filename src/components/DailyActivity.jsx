@@ -71,10 +71,11 @@ export default function DailyActivity() {
           <BarChart
             // width={}
             height={145}
-            barCategoryGap={1}
+            barCategoryGap="100%"
             barGap={8}
-            maxBarSize={145}
+            maxBarSize={120}
             data={USER_ACTIVITY}
+            // strokeDasharray={'rgba(196, 196, 196, 0.5)'}
             margin={{
               top: 30,
               right: 20,
@@ -82,15 +83,15 @@ export default function DailyActivity() {
               bottom: 0,
             }}
           >
-            <CartesianGrid strokeDasharray="1 1" />
-            <XAxis dataKey="day" />
-            <YAxis dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
+            <CartesianGrid strokeDasharray="1 1" vertical={false}/>
+            <XAxis dataKey="{Date.prototype.getDate(day)}" stroke="rgb(155, 158, 172)"/>
+            <YAxis dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} stroke="rgb(155, 158, 172)" tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
             <YAxis dataKey="calories" orientation="right" domain={['dataMin', 'dataMax']}  type="number"/>
             <Tooltip offset={23} 
                content={<TooltipTag/>}
                wrapperStyle={{ background: 'rgba(230, 0, 0, 1)', width: '39px', height:'63px', color:'#fff' , outline:"none"}} 
             />
-            <Legend verticalAlign="top" height={36}/>
+            <Legend verticalAlign="top" height={36} />
             <Bar dataKey="kilogram" fill="rgba(40, 45, 48, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
             <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
           </BarChart>
@@ -125,3 +126,4 @@ export default function DailyActivity() {
     height:50%;
   `
  
+  
