@@ -62,9 +62,8 @@ function TooltipTag({active,payload}) {
       }
   }
 
-export default class DailyActivity extends PureComponent {
-  
-    render() {
+export default function DailyActivity() {
+
       return (
         <>
         <TitleActivity2>Activité quotidienne</TitleActivity2>
@@ -97,9 +96,9 @@ export default class DailyActivity extends PureComponent {
           </BarChart>
         </ResponsiveContainer>
         </>
-      );
-    }
+      )
   }
+  
   
 
   const TitleActivity2 = styled.h2`

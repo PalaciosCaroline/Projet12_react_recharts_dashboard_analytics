@@ -1,23 +1,25 @@
-import React from 'react'
-// import { useApi } from './../hooks/useApi.hook'
-// import {getUserActivityById} from './../mock/ApiData.mock'
+import React, {useState, useEffect} from 'react'
+// import { Navigate } from 'react-router';
+// import { useFetch } from './../hooks/useApi.hook'
+
 import { useParams } from "react-router";
-// import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import KeyfigureCard from '../components/KeyfigureCard';
 import DailyActivity from '../components/DailyActivity';
-import Objectifs from '../components/Objectifs';
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
+import AverageSessions from './../components/AverageSessions';
+import BoxRadar from './../components/BoxRadar';
+import BoxScore  from '../components/BoxScore';
 
 export default function Dashboard() {
 
+  // const [dataUserInfos,setDataUserInfos] = useState([])
     let { id } = useParams();
-    
+    // let navigate = Navigate();
+
     // const user = () => {
     //   const routeParams = useParams();
     // };
-  
-    //userId = 12;
   
     // const { data: datasUser } = useApi({
     //     params: {
@@ -27,45 +29,6 @@ export default function Dashboard() {
     //   });
 
     //   console.log(datasUser)
-    
-
-    const USER_ACTIVITY = [
-              {
-                  day: '2020-07-01',
-                  kilogram: 80,
-                  calories: 240
-              },
-              {
-                  day: '2020-07-02',
-                  kilogram: 80,
-                  calories: 220
-              },
-              {
-                  day: '2020-07-03',
-                  kilogram: 81,
-                  calories: 280
-              },
-              {
-                  day: '2020-07-04',
-                  kilogram: 81,
-                  calories: 290
-              },
-              {
-                  day: '2020-07-05',
-                  kilogram: 80,
-                  calories: 160
-              },
-              {
-                  day: '2020-07-06',
-                  kilogram: 78,
-                  calories: 162
-              },
-              {
-                  day: '2020-07-07',
-                  kilogram: 76,
-                  calories: 390
-              }
-    ]
 
 
     let KeyData = {
@@ -88,11 +51,21 @@ export default function Dashboard() {
                   <DailyActivity></DailyActivity>
               </Activity>
 
-              <SessionDuring>
-                <Objectifs>
+              <SessionWrapper>
+               
+               <StyleAverageSessions>
+                <AverageSessions></AverageSessions>
+                </StyleAverageSessions>
+              
+                <StyleBoxRadar>
+                <BoxRadar />            
+                </StyleBoxRadar>
+                <StyleBoxScore>
+                <BoxScore />
+                </StyleBoxScore>
 
-                </Objectifs>
-              </SessionDuring>
+              
+              </SessionWrapper>
 
               <Keyfigures>
 
@@ -150,21 +123,22 @@ const Activity = styled.section`
   margin-bottom:30px;
   height: 320px;
   background-color:rgba(251, 251, 251, 1);
-@media (max-width: 1100px) {
-  grid-row: 1/2;
-}
+  @media (max-width: 1100px) {
+    grid-row: 1/2;
+  }
 `
-const SessionDuring = styled.section`
+const SessionWrapper = styled.section`
   color: rgba(0,0,0,0.2);
   grid-column: 1 / 4;
   grid-row: 55 / 100;
   height:263px;
-  background-color:red;
-  display: flex;
-@media (max-width: 1100px) {
-  grid-row: 2/3;
-  gap:20px;
-}
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:30px;
+  @media (max-width: 1100px) {
+    grid-row: 2/3;
+    gap:20px;
+  }
 `
 
 const Keyfigures = styled.section`
@@ -174,8 +148,6 @@ const Keyfigures = styled.section`
   display: flex;
   flex-direction:column;
   justify-content: space-between;
-  
-
   @media (max-width: 1100px) {
     flex-direction:row;
     margin-left:0;
@@ -187,8 +159,22 @@ const Keyfigures = styled.section`
     gap:20px;
   }
 `
-// DailyActivity = styled.section`
-//   display:flex;
-//   flex-direction: column;
 
-// `
+const StyleAverageSessions = styled.article`
+  background-color: ${palette.colorSecondary};
+  column : 1fr;
+  color:#fff;
+`
+const StyleBoxRadar = styled.article`
+  column : 1fr;
+  background-color: ${palette.colorPrimary};
+  color:#fff;
+`
+
+const StyleBoxScore = styled.article`
+  poition:relative;
+  column : 1fr;
+  background-color: rgba(251, 251, 251, 1);
+  
+`
+
