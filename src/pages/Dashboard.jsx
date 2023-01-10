@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 // import { useFetch } from './../hooks/useApi.hook'
 // import { getUserById, getDataInfos } from '../mock/ApiData.mock';
 
+
 import { useParams } from "react-router";
 import KeyfigureCard from '../components/KeyfigureCard';
 import DailyActivity from '../components/DailyActivity';
@@ -14,7 +15,7 @@ import BoxScore  from '../components/BoxScore';
 
 export default function Dashboard() {
 // const [dataUserInfos, setDataUserInfos] = useState([])
-  // const [dataUserInfos,setDataUserInfos] = useState([])
+  const [dataUserInfos,setDataUserInfos] = useState([])
     let { id } = useParams();
 
     // let navigate = Navigate();
@@ -37,7 +38,7 @@ export default function Dashboard() {
 // let data = getUserById(12)
 
 
-
+console.log(dataUserInfos)
 
     let KeyData = {
       calorieCount: 1930,
@@ -114,10 +115,10 @@ const BoxResult = styled.section`
   margin-top:50px;
   // margin-bottom: 45px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 858px 1fr;
   grid-template-rows: repeat(100, 1fr);
   height: 100%;
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     grid-template-columns: 1fr;
     grid-template-rows: 3fr;
     grid-auto-flow: row;
@@ -131,7 +132,7 @@ const Activity = styled.section`
   margin-bottom:30px;
   height: 320px;
   background-color:rgba(251, 251, 251, 1);
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     grid-row: 1/2;
   }
 `
@@ -142,8 +143,9 @@ const SessionWrapper = styled.section`
   height:263px;
   display:grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-columns: minmax(258, auto);
   gap:30px;
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     grid-row: 2/3;
     gap:20px;
   }
@@ -156,7 +158,9 @@ const Keyfigures = styled.section`
   display: flex;
   flex-direction:column;
   justify-content: space-between;
-  @media (max-width: 1100px) {
+  
+
+  @media (max-width: 1300px) {
     flex-direction:row;
     margin-left:0;
     margin-top:28px;
@@ -172,17 +176,21 @@ const StyleAverageSessions = styled.article`
   background-color: ${palette.colorSecondary};
   column : 1fr;
   color:#fff;
+  min-width:258px;
 `
 const StyleBoxRadar = styled.article`
   column : 1fr;
   background-color: ${palette.colorPrimary};
   color:#fff;
+  padding: 8px 8px 8px 8px;
+  max-height: 263px;
+  min-width:258px;
 `
 
 const StyleBoxScore = styled.article`
   poition:relative;
   column : 1fr;
   background-color: rgba(251, 251, 251, 1);
-  
+  min-width:208px;
 `
 

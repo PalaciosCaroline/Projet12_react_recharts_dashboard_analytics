@@ -37,6 +37,7 @@ const Keyfigure = styled.article`
 box-sizing: border-box;
   width:100%;
   height:124px;
+  max-width:270px;
   background: rgba(251, 251, 251, 1);
   display:flex;
   align-items: center;
