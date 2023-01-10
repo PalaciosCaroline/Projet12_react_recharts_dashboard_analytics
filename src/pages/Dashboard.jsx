@@ -38,7 +38,6 @@ export default function Dashboard() {
 // let data = getUserById(12)
 
 
-console.log(dataUserInfos)
 
     let KeyData = {
       calorieCount: 1930,
@@ -64,9 +63,10 @@ console.log(dataUserInfos)
                     <DailyActivity></DailyActivity>
                 </Activity>
                 <SessionWrapper>
-                  <StyleAverageSessions>
-                    <AverageSessions></AverageSessions>
-                  </StyleAverageSessions>
+                  
+                  
+                    <AverageSessions />
+                   
                   <StyleBoxRadar>
                     <BoxRadar />            
                   </StyleBoxRadar>
@@ -101,6 +101,15 @@ const Wrapped = styled.div`
   @media (max-width: 1400px) {
     padding:40px 50px 50px 180px;
   } 
+  @media (max-width: 1250px) {
+    padding:40px 70px 50px 210px;
+  } 
+  // @media (max-width: 1150px) {
+  //   padding:40px 90px 50px 210px;
+  // } 
+  @media (max-width: 1150px) {
+    padding:40px 40px 50px 160px;
+  } 
 `
 
 const BoxTitle = styled.header`
@@ -117,23 +126,25 @@ const BoxTitle = styled.header`
 const BoxResult = styled.section`
   display:flex;
   justify-content:space-between;
-  heigth:59vw;
   width:100%;
-  heigth:615px;
-  @media (max-width: 1200px) {
+  heigth:630px;
+  gap:30px;
+  @media (max-width: 1300px) {
     flex-direction :column;
+    height:auto;
+    gap:20px;
   }
 `
 const Column1 = styled.div`
  display:flex;
  flex-direction:column;
  justify-content:space-between;
+  gap:30px;
+ 
 
-gap:30px;
- width:75%;
-
- @media (max-width: 1200px) {
+ @media (max-width: 1250px) {
   width:100%;
+  gap:20px;
 }
 
 `
@@ -142,37 +153,41 @@ const Activity = styled.section`
   color: rgba(0,0,0,0.2);
   background-color:rgba(251, 251, 251, 1);
   width:100%;
-  heigth:54%;
+   
 `
 const SessionWrapper = styled.section`
   color: rgba(0,0,0,0.2);
-  height:263px;
   width:100%;
-  height:46%;
   display:flex;
+  heigth:263px;
+  gap:30px;
   justify-content: space-between;
-  max-heigth:280px;
-  article{
-    width:31%;
-    heigth:100%;
+  @media (max-width: 1250px) {
+    width:100%;
+    flex-wrap:wrap;
+    height:auto;
   }
+  @media (max-width: 1010px) {
+    justify-content: space-around;
+  }
+  
 `
 
 const Keyfigures = styled.section`
-  width:23%;
+  // width:23%;
   display: flex;
   flex-wrap:wrap;
   align-content: space-between;
   justify-content: space-between;
-  @media (max-width: 1200px) {
+  @media (max-width: 1300px) {
     width:100%;
   }
   article{
     min-width:160px;
     width:100%;
     heigth:124px;
-    @media (max-width: 1200px) {
-      width:46%;
+    @media (max-width: 1300px) {
+      width:43%;
       gap:30px;
       margin-top:30px;
     }
@@ -180,25 +195,24 @@ const Keyfigures = styled.section`
   }
 `
 
-const StyleAverageSessions = styled.article`
-  background-color: ${palette.colorSecondary};
-  width:31%;
-  height:100%;
-  color:#fff;
-`
 const StyleBoxRadar = styled.article`
-  column : 1fr;
+box-sizing:border-box;
   background-color: ${palette.colorPrimary};
   color:#fff;
-  width:31%;
-  height:100%;
+  // width:31%
   padding: 8px 8px 8px 8px;
+  @media (max-width: 1150px) {
+    height:245px;
+  } 
+  @media (max-width: 1010px) {
+    width: 300px ;
+    height: 300px;
+  } 
 `
 
 const StyleBoxScore = styled.article`
-  poition:relative;
-  width:31%;
-  height:100%;
+  position:relative;
   background-color: rgba(251, 251, 251, 1);
 `
+
 

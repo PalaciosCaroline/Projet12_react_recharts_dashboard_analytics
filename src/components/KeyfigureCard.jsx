@@ -39,13 +39,11 @@ box-sizing: border-box;
   display:flex;
   align-items: center;
   padding:32px;
-  // @media (max-width: 1100px) {
-  //   width:23%;
-  //   min-width:250px;
-  // }
-  //  @media (max-width: 950px) {
-  //   width:45%;
-  //  }
+  @media (max-width: 1350px) {
+    width:23%;
+    padding:12px 8px 12px 12px;
+  }
+  
 `
 const Img = styled.img`
     width:60px;

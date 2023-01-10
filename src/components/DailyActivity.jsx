@@ -71,9 +71,9 @@ export default function DailyActivity() {
 
 
       return (
-        <>
+        <BoxBarChart>
         <TitleActivity2>Activité quotidienne</TitleActivity2>
-        <ResponsiveContainer width="100%" height="50%">
+        <ResponsiveContainer width="100%" height={200}>
           <BarChart
             // width={}
             height={145}
@@ -102,11 +102,14 @@ export default function DailyActivity() {
             <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
           </BarChart>
         </ResponsiveContainer>
-        </>
+        </BoxBarChart>
       )
   }
   
-  
+  const BoxBarChart = styled.div`
+  width: 100% ;
+  height: 320px;
+`
 
   const TitleActivity2 = styled.h2`
   position:relative;

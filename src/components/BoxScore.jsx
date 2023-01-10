@@ -27,12 +27,12 @@ const data = [
   },
 ]
 
-const Legendtag = () => {
-  return(
-      <>coucou</>
+// const Legendtag = () => {
+//   return(
+//       <>coucou</>
     
-    )
-}
+//     )
+// }
 
 
 
@@ -40,7 +40,7 @@ export default function BoxScore() {
 
 
   return (
-    <>
+    <BoxRadialBarChart>
 
     <TitleScore2>Score</TitleScore2>
    {/*  <LegendOut><Span1>{LabelPourcent}%</Span1><Span2>de vos objectif</Span2></LegendOut> */}
@@ -58,17 +58,29 @@ export default function BoxScore() {
             clockWise
             dataKey="todayScore"
           />
-         {/* <Legend iconSize={0} layout="vertical" verticalAlign="middle" wrapperStyle={{ bottom:'68px',left:'46px',backgroundColor:'blue', borderRadius:'50%'}} 
-       width={148}
-        height={148}></Legend>   */}
+        
         </RadialBarChart>
  
       </ResponsiveContainer>
 
 
-      </>
+      </BoxRadialBarChart>
   )
 }
+
+const BoxRadialBarChart = styled.div`
+  width: 263px ;
+  height: 263px;
+  
+  @media (max-width: 1150px) {
+    width: 245px ;
+    height: 245px;
+  } 
+  @media (max-width: 1010px) {
+    width: 300px ;
+    height: 300px;
+  } 
+`
 
 
 const TitleScore2 = styled.h2`
@@ -81,18 +93,3 @@ const TitleScore2 = styled.h2`
   color:#20253A;
   `
 
-  // const LegendOut = styled.div`
-  // position:absolute;
-  // // left: 50%;
-  // // top: 50%;
-  // // transform: translate(-50%, -50%);
-
-  //   color: red;
-  // `
-  // const Span1 = styled.span`
-  
-  //   color: red;
-  // `
-  // const Span2 = styled.span`
-  //   color: red;
-  // `
