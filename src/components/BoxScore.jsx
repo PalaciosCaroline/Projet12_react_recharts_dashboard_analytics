@@ -43,10 +43,10 @@ export default function BoxScore() {
     <BoxRadialBarChart>
 
     <TitleScore2>Score</TitleScore2>
-   {/*  <LegendOut><Span1>{LabelPourcent}%</Span1><Span2>de vos objectif</Span2></LegendOut> */}
+    <LegendOut><Span1>{LabelPourcent}%</Span1><br />de vos objectif</LegendOut>
     <ResponsiveContainer width="100%" height="100%" >
     
-        <RadialBarChart cx="120" cy="120" innerRadius="25" outerRadius="140" barSize={12} data={data} > 
+        <RadialBarChart cx="120" cy="120" innerRadius="20" outerRadius="120" barSize={10} data={data} > 
         <CartesianGrid strokeDasharray="1 1" vertical={false} />
           <RadialBar
            background={{ fill: data[0].fill }}
@@ -91,5 +91,23 @@ const TitleScore2 = styled.h2`
   margin-top:24px;
   margin-left:30px;
   color:#20253A;
+  `
+  const LegendOut = styled.span`
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  font-weight: semi-bold;
+  text-align: center;
+  color: black;
+  // background: #fff;
+  border-radius: 50%;
+  // padding: 2rem 1.5rem;
+  `;
+
+  const Span1=styled.span`
+  font-size:1.4rem;
+  font-weight: bold;
   `
 
