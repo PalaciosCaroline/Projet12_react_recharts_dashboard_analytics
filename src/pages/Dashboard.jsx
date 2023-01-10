@@ -52,11 +52,12 @@ console.log(dataUserInfos)
     
         <Wrapped>
           <BoxTitle>
-          <Title>Bonjour<Name>{id}</Name></Title>
+          <h1>Bonjour<span>{id}</span></h1>
         
           <p>Félicitations ! Vous avez explosé vos objectifs hier
                 &nbsp;👏</p>
           </BoxTitle>
+
             <BoxResult>
               <Column1>
                 <Activity>
@@ -94,88 +95,110 @@ console.log(dataUserInfos)
 const Wrapped = styled.div`
   display: flex;
   flex-direction : column;
-  padding:72px 90px 0 224px;
-  height: 100vh;
+  padding:72px 90px 90px 224px;
   width:100%;
+  heigth:100%;
   @media (max-width: 1400px) {
-    padding:40px 50px 0 180px;
+    padding:40px 50px 50px 180px;
   } 
 `
 
 const BoxTitle = styled.header`
   margin-bottom:50px;
+ h1{
+    font-size:3rem;
+    margin: 0 0 25px 0;
+  }
+  span{
+    color: ${palette.colorName};
+  }
 `
 
-const Title = styled.h1`
-  font-size:3rem;
-  margin: 0 0 25px 0;
-`
-
-const Name = styled.span`
-  color: ${palette.colorName};
-`
 const BoxResult = styled.section`
-  display: grid;
-  grid-template-columns: minmax(834px, auto) minmax(200px, 260px);
-  height: 100%;
+  display:flex;
+  justify-content:space-between;
+  heigth:59vw;
   width:100%;
-  gap:30px;
-  @media (max-width: 1300px) {
-    grid-template-columns: 1fr;
+  heigth:615px;
+  @media (max-width: 1200px) {
+    flex-direction :column;
   }
 `
 const Column1 = styled.div`
- column:1;
- justify-content: space-between;
- margin-bottom:50px;
- height:611px;
- @media (max-width: 1300px) {
-  width:100%
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+
+gap:30px;
+ width:75%;
+
+ @media (max-width: 1200px) {
+  width:100%;
 }
+
 `
 
 const Activity = styled.section`
   color: rgba(0,0,0,0.2);
-  margin-bottom:30px;
-  height: 320px;
   background-color:rgba(251, 251, 251, 1);
+  width:100%;
+  heigth:54%;
 `
 const SessionWrapper = styled.section`
   color: rgba(0,0,0,0.2);
   height:263px;
+  width:100%;
+  height:46%;
   display:flex;
   justify-content: space-between;
-  gap:30px;
+  max-heigth:280px;
+  article{
+    width:31%;
+    heigth:100%;
+  }
 `
 
 const Keyfigures = styled.section`
-  // margin-left: 31px;
+  width:23%;
   display: flex;
   flex-wrap:wrap;
+  align-content: space-between;
   justify-content: space-between;
-  max-height:611px;
-  gap:20px;
-  margin-bottom:50px;
+  @media (max-width: 1200px) {
+    width:100%;
+  }
+  article{
+    min-width:160px;
+    width:100%;
+    heigth:124px;
+    @media (max-width: 1200px) {
+      width:46%;
+      gap:30px;
+      margin-top:30px;
+    }
+    
+  }
 `
 
 const StyleAverageSessions = styled.article`
   background-color: ${palette.colorSecondary};
-  column : 1fr;
+  width:31%;
+  height:100%;
   color:#fff;
-  min-width:258px;
 `
 const StyleBoxRadar = styled.article`
   column : 1fr;
   background-color: ${palette.colorPrimary};
   color:#fff;
+  width:31%;
+  height:100%;
   padding: 8px 8px 8px 8px;
-  min-width:258px;
 `
 
 const StyleBoxScore = styled.article`
   poition:relative;
-  column : 1fr;
+  width:31%;
+  height:100%;
   background-color: rgba(251, 251, 251, 1);
-  min-width:258px;
 `
 

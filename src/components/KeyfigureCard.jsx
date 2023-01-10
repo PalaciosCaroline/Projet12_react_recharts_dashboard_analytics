@@ -35,20 +35,17 @@ export default function KeyfigureCard({type, value}) {
 
 const Keyfigure = styled.article`
 box-sizing: border-box;
-  width:100%;
-  height:124px;
-  max-width:270px;
   background: rgba(251, 251, 251, 1);
   display:flex;
   align-items: center;
   padding:32px;
-  @media (max-width: 1100px) {
-    width:23%;
-    min-width:250px;
-  }
-   @media (max-width: 950px) {
-    width:45%;
-   }
+  // @media (max-width: 1100px) {
+  //   width:23%;
+  //   min-width:250px;
+  // }
+  //  @media (max-width: 950px) {
+  //   width:45%;
+  //  }
 `
 const Img = styled.img`
     width:60px;
