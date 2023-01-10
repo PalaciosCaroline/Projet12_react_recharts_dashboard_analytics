@@ -98,9 +98,8 @@ const Wrapped = styled.div`
   height: 100vh;
   width:100%;
   @media (max-width: 1400px) {
-    padding:40px 0 0 180px;
-  }
-  
+    padding:40px 50px 0 180px;
+  } 
 `
 
 const BoxTitle = styled.header`
@@ -112,15 +111,15 @@ const Title = styled.h1`
   margin: 0 0 25px 0;
 `
 
-
 const Name = styled.span`
   color: ${palette.colorName};
 `
 const BoxResult = styled.section`
   display: grid;
-  grid-template-columns: minmax(858px, 100%) minmax(230px, auto);
+  grid-template-columns: minmax(834px, auto) minmax(200px, 260px);
   height: 100%;
   width:100%;
+  gap:30px;
   @media (max-width: 1300px) {
     grid-template-columns: 1fr;
   }
@@ -130,6 +129,9 @@ const Column1 = styled.div`
  justify-content: space-between;
  margin-bottom:50px;
  height:611px;
+ @media (max-width: 1300px) {
+  width:100%
+}
 `
 
 const Activity = styled.section`
@@ -147,14 +149,13 @@ const SessionWrapper = styled.section`
 `
 
 const Keyfigures = styled.section`
-  margin-left: 31px;
+  // margin-left: 31px;
   display: flex;
   flex-wrap:wrap;
-  justify-content: flex-end;
+  justify-content: space-between;
   max-height:611px;
   gap:20px;
   margin-bottom:50px;
-
 `
 
 const StyleAverageSessions = styled.article`
@@ -168,7 +169,6 @@ const StyleBoxRadar = styled.article`
   background-color: ${palette.colorPrimary};
   color:#fff;
   padding: 8px 8px 8px 8px;
-  max-height: 263px;
   min-width:258px;
 `
 
