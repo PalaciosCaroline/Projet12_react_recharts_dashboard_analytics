@@ -109,7 +109,8 @@ export default function DailyActivity() {
   
 
   const TitleActivity2 = styled.h2`
-  padding-top=24px;
+  position:relative;
+  top:24px;
   margin-left:32px;
   font-size:0.9rem;
   font-weight:500;

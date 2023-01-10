@@ -51,37 +51,36 @@ console.log(dataUserInfos)
     return(
     
         <Wrapped>
+          <BoxTitle>
           <Title>Bonjour<Name>{id}</Name></Title>
         
           <p>Félicitations ! Vous avez explosé vos objectifs hier
                 &nbsp;👏</p>
+          </BoxTitle>
             <BoxResult>
-              <Activity>
-                  <DailyActivity></DailyActivity>
-              </Activity>
+              <Column1>
+                <Activity>
+                    <DailyActivity></DailyActivity>
+                </Activity>
+                <SessionWrapper>
+                  <StyleAverageSessions>
+                    <AverageSessions></AverageSessions>
+                  </StyleAverageSessions>
+                  <StyleBoxRadar>
+                    <BoxRadar />            
+                  </StyleBoxRadar>
+                  <StyleBoxScore>
+                    <BoxScore />
+                  </StyleBoxScore>
 
-              <SessionWrapper>
-               
-               <StyleAverageSessions>
-                <AverageSessions></AverageSessions>
-                </StyleAverageSessions>
-              
-                <StyleBoxRadar>
-                <BoxRadar />            
-                </StyleBoxRadar>
-                <StyleBoxScore>
-                <BoxScore />
-                </StyleBoxScore>
-
-              
-              </SessionWrapper>
-
+                
+                </SessionWrapper>
+              </Column1>
               <Keyfigures>
-
-              <KeyfigureCard type='Calories' value={KeyData.calorieCount}></KeyfigureCard>
-              <KeyfigureCard type='Protéines' value={KeyData.proteinCount}></KeyfigureCard>
-              <KeyfigureCard type='Glucides' value={KeyData.carbohydrateCount}></KeyfigureCard>
-              <KeyfigureCard type='Lipides' value={KeyData.lipidCount}></KeyfigureCard>               
+                <KeyfigureCard type='Calories' value={KeyData.calorieCount}></KeyfigureCard>
+                <KeyfigureCard type='Protéines' value={KeyData.proteinCount}></KeyfigureCard>
+                <KeyfigureCard type='Glucides' value={KeyData.carbohydrateCount}></KeyfigureCard>
+                <KeyfigureCard type='Lipides' value={KeyData.lipidCount}></KeyfigureCard>               
               </Keyfigures>
 
             </BoxResult>
@@ -95,12 +94,17 @@ console.log(dataUserInfos)
 const Wrapped = styled.div`
   display: flex;
   flex-direction : column;
-  padding:72px 9% 0 224px;
-  height: 100%;
+  padding:72px 90px 0 224px;
+  height: 100vh;
   width:100%;
-  @media (max-width: 1300px) {
-    padding:77px 50px 0 167px;
+  @media (max-width: 1400px) {
+    padding:40px 0 0 180px;
   }
+  
+`
+
+const BoxTitle = styled.header`
+  margin-bottom:50px;
 `
 
 const Title = styled.h1`
@@ -108,68 +112,49 @@ const Title = styled.h1`
   margin: 0 0 25px 0;
 `
 
+
 const Name = styled.span`
   color: ${palette.colorName};
 `
 const BoxResult = styled.section`
-  margin-top:50px;
-  // margin-bottom: 45px;
   display: grid;
-  grid-template-columns: 858px 1fr;
-  grid-template-rows: repeat(100, 1fr);
+  grid-template-columns: minmax(858px, 100%) minmax(230px, auto);
   height: 100%;
+  width:100%;
   @media (max-width: 1300px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 3fr;
-    grid-auto-flow: row;
   }
+`
+const Column1 = styled.div`
+ column:1;
+ justify-content: space-between;
+ margin-bottom:50px;
+ height:611px;
 `
 
 const Activity = styled.section`
   color: rgba(0,0,0,0.2);
-  grid-column: 1 / 4;
-    grid-row: 1 / 55;
   margin-bottom:30px;
   height: 320px;
   background-color:rgba(251, 251, 251, 1);
-  @media (max-width: 1300px) {
-    grid-row: 1/2;
-  }
 `
 const SessionWrapper = styled.section`
   color: rgba(0,0,0,0.2);
-  grid-column: 1 / 4;
-  grid-row: 55 / 100;
   height:263px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-columns: minmax(258, auto);
+  display:flex;
+  justify-content: space-between;
   gap:30px;
-  @media (max-width: 1300px) {
-    grid-row: 2/3;
-    gap:20px;
-  }
 `
 
 const Keyfigures = styled.section`
   margin-left: 31px;
-  grid-column: 4 / 5;
-  grid-row: 1 / 100;
   display: flex;
-  flex-direction:column;
-  justify-content: space-between;
-  
+  flex-wrap:wrap;
+  justify-content: flex-end;
+  max-height:611px;
+  gap:20px;
+  margin-bottom:50px;
 
-  @media (max-width: 1300px) {
-    flex-direction:row;
-    margin-left:0;
-    margin-top:28px;
-    grid-column : 1/2;
-    grid-row: 3 / 4;
-    height:auto;
-    flex-wrap:wrap;
-    gap:20px;
-  }
 `
 
 const StyleAverageSessions = styled.article`
@@ -191,6 +176,6 @@ const StyleBoxScore = styled.article`
   poition:relative;
   column : 1fr;
   background-color: rgba(251, 251, 251, 1);
-  min-width:208px;
+  min-width:258px;
 `
 
