@@ -111,7 +111,7 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
             }}
           >
             <CartesianGrid strokeDasharray="1 1" vertical={false}/>
-            <XAxis dataKey="day" domain={['dataMin', 'dataMax']} stroke="rgb(155, 158, 172)" dy={1}/>
+            <XAxis dataKey="day" domain={['dataMin', 'dataMax']} stroke="rgb(155, 158, 172)" dy={1} tickMargin={12}/>
             <YAxis  dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} stroke="rgb(155, 158, 172)" tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
             <YAxis dataKey="calories" orientation="right" domain={['dataMin', 'dataMax']}  type="number"/>
             <Tooltip offset={23} 
@@ -138,7 +138,7 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
   justify-content: space-between;
   width:90%;
   top:24px;
-  margin-bottom:85px;
+  margin-bottom:68px;
   margin-left:32px;
   font-size:0.9rem;
   font-weight:500;
