@@ -13,7 +13,28 @@ import styled from 'styled-components';
 
 
 
-const USER_ACTIVITY = [
+
+
+
+function TooltipTag({active,payload}) {
+
+ if(active){
+    return(
+          <BoxTooltipTag>
+              <SpanTooltip1>{payload[0].value}Kg</SpanTooltip1>
+              <br />
+              <br />
+              <SpanTooltip2>{payload[1].value}Kcal</SpanTooltip2>
+          </BoxTooltipTag>
+      )}
+      else{
+        return;
+      }
+  }
+
+export default function DailyActivity() {
+
+  const USER_ACTIVITY = [
     {
         day: '2020-07-01',
         kilogram: 80,
@@ -51,34 +72,28 @@ const USER_ACTIVITY = [
     }
 ]
 
-function TooltipTag({active,payload}) {
-  if(active){
-    return(
-          <BoxTooltipTag>
-              <SpanTooltip1>{payload[0].value}Kg</SpanTooltip1>
-              <br />
-              <br />
-              <SpanTooltip2>{payload[1].value}Kcal</SpanTooltip2>
-          </BoxTooltipTag>
-      )}
-      else{
-        return;
-      }
-  }
-
-export default function DailyActivity() {
-
-
+for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
+        {console.log(USER_ACTIVITY[i].day)
+          let jourUnit = USER_ACTIVITY[i].day.charAt(USER_ACTIVITY[i].day.length-1); 
+          let jourDiz = USER_ACTIVITY[i].day.charAt(USER_ACTIVITY[i].day.length-2); 
+          console.log(jourDiz, jourUnit)
+          if (jourDiz === '0'){
+            USER_ACTIVITY[i].day = jourUnit;
+          } else{
+            USER_ACTIVITY[i].day = `${jourDiz}${jourUnit}`;
+          }          
+        }
 
       return (
         <BoxBarChart>
         <TitleActivity2>Activité quotidienne</TitleActivity2>
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer width="100%" 
+            height={200}>
           <BarChart
             // width={}
             height={145}
-            barCategoryGap="100%"
-            barGap={8}
+            barCategoryGap={1}
+            barGap={6}
             maxBarSize={120}
             data={USER_ACTIVITY}
             // strokeDasharray={'rgba(196, 196, 196, 0.5)'}
@@ -90,8 +105,8 @@ export default function DailyActivity() {
             }}
           >
             <CartesianGrid strokeDasharray="1 1" vertical={false}/>
-            <XAxis dataKey="{Date.prototype.getDate(day)}" stroke="rgb(155, 158, 172)"/>
-            <YAxis dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} stroke="rgb(155, 158, 172)" tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
+            <XAxis dataKey="day" domain={['dataMin', 'dataMax']} stroke="rgb(155, 158, 172)" dy={1}/>
+            <YAxis  dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} stroke="rgb(155, 158, 172)" tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
             <YAxis dataKey="calories" orientation="right" domain={['dataMin', 'dataMax']}  type="number"/>
             <Tooltip offset={23} 
                content={<TooltipTag/>}
@@ -114,11 +129,12 @@ export default function DailyActivity() {
   const TitleActivity2 = styled.h2`
   position:relative;
   top:24px;
+  margin-bottom:85px;
   margin-left:32px;
   font-size:0.9rem;
   font-weight:500;
   color: rgba(32, 37, 58, 1);
-  margin-bottom:100px;
+  
 
   `
 

@@ -61,12 +61,12 @@ export default function AverageSessions() {
       }}
     >
      
-      <XAxis dataKey="day" />
+      <XAxis dataKey="day" tickLine={true} padding={{right:10, left:10}} width='110%'/>
       <YAxis  dataKey="sessionLength" hide={true} />
       <Tooltip />
       {/* <Legend stroke={{color:'rgba(255,255,255,0.5'}} verticalalign="top" height={36} content={<LegendTitle/>}/> */}
       <Line type="monotone" 
-            dataKey="sessionLength" stroke="rgba(255,255,255,0.5" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+            dataKey="sessionLength" stroke="rgba(255,255,255,0.5" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
     
     </LineChart>
   </ResponsiveContainer>
