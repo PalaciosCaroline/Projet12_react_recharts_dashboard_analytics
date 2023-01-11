@@ -84,9 +84,15 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
           }          
         }
 
+// const LegendTitle = () => {
+//   return(
+//       <><BoxLegend><div></div></BoxLegend></>
+//     )
+// }
+
       return (
         <BoxBarChart>
-        <TitleActivity2>Activité quotidienne</TitleActivity2>
+        <TitleLegendActivity><h2>Activité quotidienne</h2><LegendBox><TagPoids></TagPoids>Poids(Kg)&emsp;<TagCalories></TagCalories>Calories brulées(Kcal)</LegendBox></TitleLegendActivity>
         <ResponsiveContainer width="100%" 
             height={200}>
           <BarChart
@@ -112,7 +118,7 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
                content={<TooltipTag/>}
                wrapperStyle={{ background: 'rgba(230, 0, 0, 1)', width: '39px', height:'63px', color:'#fff' , outline:"none"}} 
             />
-            <Legend verticalAlign="top" height={36} />
+            {/* <Legend verticalAlign="top" height={36} content={<LegendTitle/>}  /> */}
             <Bar dataKey="kilogram" fill="rgba(40, 45, 48, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
             <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
           </BarChart>
@@ -126,16 +132,46 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
   height: 320px;
 `
 
-  const TitleActivity2 = styled.h2`
+  const TitleLegendActivity = styled.div`
   position:relative;
+  display:flex;
+  justify-content: space-between;
+  width:90%;
   top:24px;
   margin-bottom:85px;
   margin-left:32px;
   font-size:0.9rem;
   font-weight:500;
   color: rgba(32, 37, 58, 1);
-  
+  h2{
+    font-size:0.9rem;
+    font-weight:500;
+    margin:0;
+  }
+  `
 
+  const LegendBox = styled.div`
+    display: flex;
+    font-size:0.9rem;
+  `
+  const TagPoids = styled.div`
+  
+    width:3px;
+    heigth:3px;
+    border-radius:50%;
+    align-self: center;
+    background-color: rgba(40, 45, 48, 1);
+    margin-right:5px;
+    padding:4px;
+  `
+  const TagCalories = styled.div`
+    width:3px;
+    heigth:3px;
+    align-self: center;
+    border-radius:50%;
+    background-color: rgba(230, 0, 0, 1);
+    margin-right:5px;
+    padding:4px;
   `
 
   const BoxTooltipTag = styled.div`
