@@ -22,22 +22,13 @@ const data = [
   },
   {
     fill: "red",
-    todayScore: 0.12,
+    todayScore: `${dataUser}`,
     name:`${LabelPourcent}% de vos objectif`
   },
 ]
 
-// const Legendtag = () => {
-//   return(
-//       <>coucou</>
-    
-//     )
-// }
-
-
 
 export default function BoxScore() {
-
 
   return (
     <BoxRadialBarChart>
@@ -46,14 +37,14 @@ export default function BoxScore() {
     <LegendOut><Span1>{LabelPourcent}%</Span1><br />de vos objectif</LegendOut>
     <ResponsiveContainer width="100%" height="100%" >
     
-        <RadialBarChart cx="120" cy="120" innerRadius="20" outerRadius="120" barSize={10} data={data} > 
-        <CartesianGrid strokeDasharray="1 1" vertical={false} />
+        <RadialBarChart cx="50%" cy="50%" innerRadius="20" outerRadius="160" barSize={13} data={data} > 
+        <CartesianGrid strokeDasharray="1 1" vertical={false} horizontal={false}/>
           <RadialBar
            background={{ fill: data[0].fill }}
           // fill={{color:'red'}}
          
           track={{background: '#fff'}}
-            minAngle={15}
+            minAngle={14}
             // label={{ position: 'insideStart', fill: 'red' }}
             clockWise
             dataKey="todayScore"
@@ -92,18 +83,19 @@ const TitleScore2 = styled.h2`
   margin-left:30px;
   color:#20253A;
   `
-  const LegendOut = styled.span`
+  const LegendOut = styled.div`
   position: absolute;
   left: 50%;
-  top: 45%;
+  top: 47%;
   transform: translate(-50%, -50%);
   font-size: 1rem;
   font-weight: semi-bold;
   text-align: center;
   color: black;
-  // background: #fff;
+  background: #fff;
   border-radius: 50%;
-  // padding: 2rem 1.5rem;
+  padding: 50px 60px 50px 60px;
+  
   `;
 
   const Span1=styled.span`
