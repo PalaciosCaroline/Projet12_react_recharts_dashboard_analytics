@@ -5,6 +5,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import styled from 'styled-components';
 
 
+
 export default function DailyActivity() {
 
   const USER_ACTIVITY = [

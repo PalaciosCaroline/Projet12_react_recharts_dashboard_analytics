@@ -38,6 +38,45 @@ export default function AverageSessions() {
             }
         ]
 
+  
+
+        function getDay(day) {
+            switch (day) {
+              case 1:
+                return  'L';
+        
+              case 2:
+                return  'M';
+        
+              case 3:
+                return  'M';
+        
+              case 4:
+                return 'J';
+              
+              case 5:
+                return  'V';
+        
+              case 6:
+                return 'S';
+            
+              case 7:
+                return 'D';
+            
+              default:
+                return ;
+            }
+          }
+
+    // for (let i = 0 ; i < data.length ; i ++) {
+    //   let day = getDay(data[i].day);
+    //    data[i].day = day ;
+    // }
+    for (let i = 0 ; i < data.length ; i ++) {
+      let day = getDay(data[i].day);
+       data[i].day = day ;
+    }
+    
   const TooltipTagAverageSessions = ({active,payload}) => {
     if(active){
       return(
@@ -50,6 +89,7 @@ export default function AverageSessions() {
         }
   }
     
+
 
 
   return (
