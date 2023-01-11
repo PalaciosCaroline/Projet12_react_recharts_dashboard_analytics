@@ -9,9 +9,11 @@ const {
  * @description Retrieve the main user info (first name, last name, today score)
  * @param {number} id 
  */
-export const getUserById = id => USER_MAIN_DATA
+const getUserById = id => USER_MAIN_DATA
     .filter(user => user.id === id)
     .shift()
+
+export const getUserInfosById = id => getUserById(id).userInfos['firstName']
 
 
 /**

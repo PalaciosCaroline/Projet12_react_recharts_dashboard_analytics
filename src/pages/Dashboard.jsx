@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 // import { Navigate } from 'react-router';
 // import { useFetch } from './../hooks/useApi.hook'
-// import { getUserById, getDataInfos } from '../mock/ApiData.mock';
+import { getUserInfosById } from '../mock/ApiData.mock';
 
 
 import { useParams } from "react-router";
@@ -14,8 +14,8 @@ import BoxRadar from './../components/BoxRadar';
 import BoxScore  from '../components/BoxScore';
 
 export default function Dashboard() {
-// const [dataUserInfos, setDataUserInfos] = useState([])
-  const [dataUserInfos,setDataUserInfos] = useState([])
+  const [userName, setUserName] = useState([])
+  // const [dataUserInfos,setDataUserInfos] = useState([])
     let { id } = useParams();
 
     // let navigate = Navigate();
@@ -34,9 +34,10 @@ export default function Dashboard() {
     //   console.log(datasUser)
 
 
-
-// let data = getUserById(12)
-
+  useEffect(() => {
+    let data = getUserInfosById(parseInt(id));
+    setUserName(data)
+  }, [id])
 
 
     let KeyData = {
@@ -51,7 +52,7 @@ export default function Dashboard() {
     
         <Wrapped>
           <BoxTitle>
-          <h1>Bonjour<span>{id}</span></h1>
+          <h1>Bonjour&ensp;<span>{userName}</span></h1>
         
           <p>Félicitations ! Vous avez explosé vos objectifs hier
                 &nbsp;👏</p>
@@ -67,9 +68,9 @@ export default function Dashboard() {
                   
                     <AverageSessions />
                    
-                  <StyleBoxRadar>
+                  {/* <StyleBoxRadar> */}
                     <BoxRadar />            
-                  </StyleBoxRadar>
+                  {/* </StyleBoxRadar> */}
                   <StyleBoxScore>
                     <BoxScore />
                   </StyleBoxScore>
@@ -195,20 +196,20 @@ const Keyfigures = styled.section`
   }
 `
 
-const StyleBoxRadar = styled.article`
-box-sizing:border-box;
-  background-color: ${palette.colorPrimary};
-  color:#fff;
-  // width:31%
-  padding: 8px 8px 8px 8px;
-  @media (max-width: 1150px) {
-    height:245px;
-  } 
-  @media (max-width: 1010px) {
-    width: 300px ;
-    height: 300px;
-  } 
-`
+// const StyleBoxRadar = styled.article`
+// box-sizing:border-box;
+//   background-color: ${palette.colorPrimary};
+//   color:#fff;
+//   // width:31%
+//   padding: 8px 8px 8px 8px;
+//   @media (max-width: 1150px) {
+//     height:245px;
+//   } 
+//   @media (max-width: 1010px) {
+//     width: 300px ;
+//     height: 300px;
+//   } 
+// `
 
 const StyleBoxScore = styled.article`
   position:relative;

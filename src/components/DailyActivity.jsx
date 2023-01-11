@@ -72,16 +72,9 @@ export default function DailyActivity() {
     }
 ]
 
-for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
-        {console.log(USER_ACTIVITY[i].day)
-          let jourUnit = USER_ACTIVITY[i].day.charAt(USER_ACTIVITY[i].day.length-1); 
-          let jourDiz = USER_ACTIVITY[i].day.charAt(USER_ACTIVITY[i].day.length-2); 
-          console.log(jourDiz, jourUnit)
-          if (jourDiz === '0'){
-            USER_ACTIVITY[i].day = jourUnit;
-          } else{
-            USER_ACTIVITY[i].day = `${jourDiz}${jourUnit}`;
-          }          
+for (let i = 0 ; i < USER_ACTIVITY.length ; i ++) {
+          let day = parseInt(USER_ACTIVITY[i].day.split('-')[2]);
+            USER_ACTIVITY[i].day = day; 
         }
 
 // const LegendTitle = () => {
@@ -113,7 +106,7 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++)
             <CartesianGrid strokeDasharray="1 1" vertical={false}/>
             <XAxis dataKey="day" domain={['dataMin', 'dataMax']} stroke="rgb(155, 158, 172)" dy={1} tickMargin={12}/>
             <YAxis  dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} stroke="rgb(155, 158, 172)" tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
-            <YAxis dataKey="calories" orientation="right" domain={['dataMin', 'dataMax']}  type="number"/>
+            <YAxis dataKey="calories" orientation="right" domain={['dataMin / 3', 'dataMax / 3']}  type="number"/>
             <Tooltip offset={23} 
                content={<TooltipTag/>}
                wrapperStyle={{ background: 'rgba(230, 0, 0, 1)', width: '39px', height:'63px', color:'#fff' , outline:"none"}} 

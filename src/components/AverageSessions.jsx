@@ -4,6 +4,17 @@ import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
 
+function TooltipTagAverageSessions({active,payload}) {
+if(active){
+  return(
+        <BoxTooltipTag>
+            <SpanTooltip>{payload[0].value}min</SpanTooltip>
+        </BoxTooltipTag>
+    )}
+    else{
+      return;
+    }
+}
 
 export default function AverageSessions() {
 
@@ -44,6 +55,8 @@ export default function AverageSessions() {
   //     )
   // }
 
+  
+
 
   return (
     <BoxLineChart>
@@ -63,7 +76,9 @@ export default function AverageSessions() {
      
       <XAxis dataKey="day" tickLine={true} padding={{right:10, left:10}} width='110%'/>
       <YAxis  dataKey="sessionLength" hide={true} />
-      <Tooltip />
+      <Tooltip offset={23} 
+               content={<TooltipTagAverageSessions/>}
+               wrapperStyle={{ background: '#fff', width: '39px', height:'25px', color:'#000' , outline:"none"}} />
       {/* <Legend stroke={{color:'rgba(255,255,255,0.5'}} verticalalign="top" height={36} content={<LegendTitle/>}/> */}
       <Line type="monotone" 
             dataKey="sessionLength" stroke="rgba(255,255,255,0.5" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
@@ -97,3 +112,14 @@ const LegendTitle = styled.div`
     padding:20px 10px 10px 34px;
     position:absolute;
 `
+
+const BoxTooltipTag = styled.div`
+    font-size:0.5rem;
+    text-align : center;
+    padding:8px 0 8px 0;
+    
+  `
+
+  const SpanTooltip = styled.div`
+    font-weight:bold;
+  `
