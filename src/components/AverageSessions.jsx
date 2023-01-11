@@ -4,17 +4,6 @@ import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
 
-function TooltipTagAverageSessions({active,payload}) {
-if(active){
-  return(
-        <BoxTooltipTag>
-            <SpanTooltip>{payload[0].value}min</SpanTooltip>
-        </BoxTooltipTag>
-    )}
-    else{
-      return;
-    }
-}
 
 export default function AverageSessions() {
 
@@ -48,14 +37,19 @@ export default function AverageSessions() {
                 sessionLength: 60
             }
         ]
-  
-  // const LegendTitle = () => {
-  //   return(
-  //       <>Durée moyenne des sessions</>
-  //     )
-  // }
 
-  
+  const TooltipTagAverageSessions = ({active,payload}) => {
+    if(active){
+      return(
+            <BoxTooltipTag>
+                <SpanTooltip>{payload[0].value} min</SpanTooltip>
+            </BoxTooltipTag>
+        )}
+        else{
+          return;
+        }
+  }
+    
 
 
   return (

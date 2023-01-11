@@ -5,33 +5,6 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import styled from 'styled-components';
 
 
-// export default function DailyActivity({data}) {
-//   return (
-//     <BarChart></BarChart>
-//   )
-// }
-
-
-
-
-
-
-function TooltipTag({active,payload}) {
-
- if(active){
-    return(
-          <BoxTooltipTag>
-              <SpanTooltip1>{payload[0].value}Kg</SpanTooltip1>
-              <br />
-              <br />
-              <SpanTooltip2>{payload[1].value}Kcal</SpanTooltip2>
-          </BoxTooltipTag>
-      )}
-      else{
-        return;
-      }
-  }
-
 export default function DailyActivity() {
 
   const USER_ACTIVITY = [
@@ -77,6 +50,21 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++) {
             USER_ACTIVITY[i].day = day; 
         }
 
+    const TooltipTag = ({active,payload}) => {
+
+          if(active){
+             return(
+                   <BoxTooltipTag>
+                       <SpanTooltip1>{payload[0].value}Kg</SpanTooltip1>
+                       <br />
+                       <br />
+                       <SpanTooltip2>{payload[1].value}Kcal</SpanTooltip2>
+                   </BoxTooltipTag>
+               )}
+               else{
+                 return;
+               }
+           }
 // const LegendTitle = () => {
 //   return(
 //       <><BoxLegend><div></div></BoxLegend></>
