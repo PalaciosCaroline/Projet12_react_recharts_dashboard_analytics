@@ -31,8 +31,6 @@ export default function App() {
 }
 
 
-
-
 const Main = styled.main`
   display: flex;
   min-height: 934px;

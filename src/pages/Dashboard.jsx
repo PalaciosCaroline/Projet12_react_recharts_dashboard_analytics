@@ -207,6 +207,11 @@ const Keyfigures = styled.section`
       gap:30px;
       margin-top:30px;
     }
+    @media (max-width: 680px) {
+      width:90%;
+      gap:20px;
+      margin:30px auto 20px;
+    }
     
   }
 `
