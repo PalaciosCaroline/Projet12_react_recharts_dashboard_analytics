@@ -1,39 +1,26 @@
-import React, {useState, useEffect}  from 'react'
-import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import {formatterDataPerformance} from '../hooks/formatData'
+import React from 'react'
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
-import { getData} from '../hooks/usefetch';
-import { useParams } from "react-router";
 
-export default function BoxRadar() {
-  const [userPerformance,setUserPerformance] = useState([])
-  let {id} = useParams();
+/** render Graphiq Radar performance (Recharts)
+  * @param  {BoxRadar} function Component
+  * @param  {userPerformance} array
+  * @return {JSX}
+  */
+export default function BoxRadar({userPerformance}) {
 
-  useEffect(() => {
-    const Performance = async () => {
-      const request = await getData(id, 'performance');
-      if (!request) return alert("data error");
-      const data = formatterDataPerformance(request.data.data)
-      setUserPerformance(data);
-    };
-    Performance();
-  }, [id]);
-
-  if (userPerformance.length === 0) return null;
+  if (userPerformance.length <= 0) return null;
 
   return (
     <BoxRadarChart>
     <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={userPerformance} >
           <PolarGrid gridType="polygon" />
-         
           <PolarAngleAxis dataKey="kind"  tick={{ fontSize: 8 }} stroke='white' tickLine={false} axisLine={false}/>
-          
           <Radar dataKey="value" stroke='#FF0101'  fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
-    
     </BoxRadarChart>
   )
 }

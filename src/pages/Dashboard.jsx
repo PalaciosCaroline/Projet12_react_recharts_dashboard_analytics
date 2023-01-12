@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react'
-// import { Navigate } from 'react-router';
-// import { useFetch } from './../hooks/useApi.hook'
+import PropTypes from 'prop-types'; 
 import { getUserInfosById } from '../mock/ApiData.mock';
-
-import { useApi ,useApi2, getUserInfos, getData} from '../hooks/usefetch';
+import { useApi , getData} from '../hooks/usefetch';
 import { useParams } from "react-router";
 import KeyfigureCard from '../components/KeyfigureCard';
 import DailyActivity from '../components/DailyActivity';
@@ -12,15 +10,22 @@ import { palette } from './../theme/styledvariable'
 import AverageSessions from './../components/AverageSessions';
 import BoxRadar from './../components/BoxRadar';
 import BoxScore  from '../components/BoxScore';
+import {formatterDataPerformance, formatterDataAverageSessions, formatterDataActivity, formatterKilo} from '../hooks/formatData'
+
+/** render Main Dashboard
+ *  @param { useParams } method
+  * @param {BoxScore,BoxScore,AverageSessions, DailyActivity, KeyfigureCard} functional component
+  * @param {formatterDataPerformance, formatterDataAverageSessions, formatterDataActivity, formatterKilo} function JS
+  * @return {JSX} functional component
+  */
 
 export default function Dashboard() {
-  // const [userName, setUserName] = useState([])
   const [userInfos,setUserInfos] = useState([])
   const [userPerformance,setUserPerformance] = useState([])
-  // const [firstName,setFirstName] = useState('')
+  const [userAverageSessions,setUserAverageSessions] = useState([])
+  const [userActivity, setUserActivity] = useState([])
     let { id } = useParams();
     //id = parseInt(id)
-    // let navigate = Navigate();
 
     // const user = () => {
     //   const routeParams = useParams();
@@ -33,7 +38,6 @@ export default function Dashboard() {
     //   defaultValue: { results: [] }
     // });
 
-
     //   console.log(dataUser.data.userInfos)
 
     useEffect(() => {
@@ -45,50 +49,66 @@ export default function Dashboard() {
       data();
     }, [id]);
 
+    useEffect(() => {
+      const averageSessions = async () => {
+        const res = await getData(id, 'averageSessions');
+        if (!res) return alert("data error");
+        const data = formatterDataAverageSessions(res.data.sessions)
+        setUserAverageSessions(data);
+        };
+        averageSessions();
+    }, [id]);
+
+    useEffect(() => {
+      const performance = async () => {
+        const res = await getData(id, 'performance');
+        if (!res) return alert("data error");
+        const data = formatterDataPerformance(res.data.data)
+        setUserPerformance(data);
+      };    
+      performance();
+    }, [id]);
+
+    useEffect(() => {
+      const activity = async () => {
+        const res = await getData(id, 'activity');
+        if (!res) return alert("data error");
+        const data = formatterDataActivity(res.data.sessions)
+        setUserActivity(data);
+      };    
+      activity();
+    }, [id]);
+
+
     if (userInfos.length === 0) return null;
-
-   
-
-
-    let KeyData = {
-      calorieCount: 1930,
-      proteinCount: 155,
-      carbohydrateCount: 290,
-      lipidCount: 50
-    };
+    let valueKilo = formatterKilo(userInfos.keyData.calorieCount)
 
 
     return(
-    
         <Wrapped>
           <BoxTitle>
           <h1>Bonjour&ensp;<span>{userInfos.userInfos.firstName}</span></h1>
-        
           <p>Félicitations ! Vous avez explosé vos objectifs hier
                 &nbsp;👏</p>
           </BoxTitle>
-
             <BoxResult>
               <Column1>
                 <Activity>
-                    <DailyActivity></DailyActivity>
+                    <DailyActivity userActivity={userActivity}/>
                 </Activity>
                 <SessionWrapper>
-                    <AverageSessions />
-                   
-                  {/* <StyleBoxRadar> */}
-                    <BoxRadar />            
-                  {/* </StyleBoxRadar> */}
+                    <AverageSessions userAverageSessions={userAverageSessions}/>
+                    <BoxRadar userPerformance={userPerformance}/>            
                   <StyleBoxScore>
                     <BoxScore dataUser={userInfos}/>
                   </StyleBoxScore>
                 </SessionWrapper>
               </Column1>
               <Keyfigures>
-                <KeyfigureCard type='Calories' value={KeyData.calorieCount}></KeyfigureCard>
-                <KeyfigureCard type='Protéines' value={KeyData.proteinCount}></KeyfigureCard>
-                <KeyfigureCard type='Glucides' value={KeyData.carbohydrateCount}></KeyfigureCard>
-                <KeyfigureCard type='Lipides' value={KeyData.lipidCount}></KeyfigureCard>               
+              <KeyfigureCard type='Calories' value={valueKilo}></KeyfigureCard>
+                <KeyfigureCard type='Protéines' value={userInfos.keyData.proteinCount.toString()}></KeyfigureCard>
+                <KeyfigureCard type='Glucides' value={userInfos.keyData.carbohydrateCount.toString()}></KeyfigureCard>
+                <KeyfigureCard type='Lipides' value={userInfos.keyData.lipidCount.toString()}></KeyfigureCard>               
               </Keyfigures>
 
             </BoxResult>
@@ -215,21 +235,6 @@ const Keyfigures = styled.section`
     
   }
 `
-
-// const StyleBoxRadar = styled.article`
-// box-sizing:border-box;
-//   background-color: ${palette.colorPrimary};
-//   color:#fff;
-//   // width:31%
-//   padding: 8px 8px 8px 8px;
-//   @media (max-width: 1150px) {
-//     height:245px;
-//   } 
-//   @media (max-width: 1010px) {
-//     width: 300px ;
-//     height: 300px;
-//   } 
-// `
 
 const StyleBoxScore = styled.article`
   position:relative;

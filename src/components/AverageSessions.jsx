@@ -1,30 +1,17 @@
-import React, {useState, useEffect} from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { getData} from '../hooks/usefetch';
-import { formatterDataAverageSessions } from '../hooks/formatData';
-import { useParams } from "react-router";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
+/** 
+  * @param  {AverageSessions} function Component
+  * @param  {userAverageSessions} array
+  * @return {JSX}
+  */
 
-
-export default function AverageSessions() {
-
-  const [userAverageSessions,setUserAverageSessions] = useState([])
-  let {id} = useParams();
-
-  useEffect(() => {
-    const averageSessions = async () => {
-      const request = await getData(id, 'averageSessions');
-      if (!request) return alert("data error");
-      const data = formatterDataAverageSessions(request.data.sessions)
-      setUserAverageSessions(data);
-    };
-    averageSessions();
-  }, [id]);
+export default function AverageSessions({userAverageSessions}) {
 
   if (userAverageSessions.length == null) return null;
-    
+
   const TooltipTagAverageSessions = ({active,payload}) => {
     if(active){
       return(
@@ -36,6 +23,12 @@ export default function AverageSessions() {
           return;
         }
   }
+
+  // TooltipTagAverageSessions.propTypes = {
+  //   active: PropTypes.boolean,
+  //   payload: PropTypes.array,
+  // };
+  
     
   return (
     <BoxLineChart>
@@ -52,7 +45,6 @@ export default function AverageSessions() {
         bottom: 5,
       }}
     >
-     
       <XAxis dataKey="day" padding={{right:10, left:10}} stroke="rgba(255,255,255,0.6" axisLine={false}
             dy={-10}
             tickLine={false}/>
@@ -60,7 +52,6 @@ export default function AverageSessions() {
       <Tooltip offset={23} 
                content={<TooltipTagAverageSessions/>}
                wrapperStyle={{ background: '#fff', width: '39px', height:'25px', color:'#000' , outline:"none"}} />
-      {/* <Legend stroke={{color:'rgba(255,255,255,0.5'}} verticalalign="top" height={36} content={<LegendTitle/>}/> */}
       <Line type="monotone" 
             dataKey="sessionLength" stroke="rgba(255,255,255,0.6" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
     
@@ -69,6 +60,8 @@ export default function AverageSessions() {
   </BoxLineChart>
   )
 }
+
+
 
 const BoxLineChart = styled.article`
 background-color: ${palette.colorSecondary};

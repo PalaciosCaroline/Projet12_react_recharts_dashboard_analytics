@@ -1,3 +1,9 @@
+
+/** 
+  * @param  {formatterDataPerformance} function
+  * @param  {data} array
+  * @return {formatData} array
+  */ 
 export function formatterDataPerformance(data){
     const InverseDataKing = data.sort((a, b) => (b.king > a.king ? 1 : -1))
     const formatData = InverseDataKing.map((data) => { 
@@ -21,15 +27,19 @@ export function formatterDataPerformance(data){
     return formatData;
 }
 
+/** 
+  * @param  {formatterDataScore} function
+  * @param  {dataUser} array
+  * @return {data} array
+  * @return {labelPourcent} number
+  */  
 export function formatterDataScore(dataUser){
     const score =  dataUser.todayScore ? dataUser.todayScore : dataUser.score;
     const labelPourcent = score * 100;
-  
     const data = [
       {
         fill: "transparent",
         todayScore: 1,
-     
       },
       {
         fill: "red",
@@ -40,7 +50,11 @@ export function formatterDataScore(dataUser){
     return {data,labelPourcent} ;
 }
           
-    
+/** 
+  * @param  {formatterDataAverageSessions} function
+  * @param  {data} array
+  * @return {data} array
+  */    
 export function formatterDataAverageSessions(data){
 
     const formatData = data.map((data) => { 
@@ -71,4 +85,24 @@ export function formatterDataAverageSessions(data){
         }
   })
   return formatData;
+}
+
+/** 
+  * @param  {formatterDataActivity} function
+  * @param  {data} array
+  * @return {data} array
+  */
+export function formatterDataActivity(data) {
+    for (let i = 0 ; i < data.length ; i ++) {
+        let day = parseInt(data[i].day.split('-')[2]);
+          data[i].day = day; 
+      }
+      return data;
+}
+
+export function formatterKilo(value){
+    // let data = new Intl.NumberFormat("en-IN", {style: "decimal", maximumFractionDigits: 0}.format(value));
+        var str = value.toString().split(".");
+        str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return str.join(".");    
 }

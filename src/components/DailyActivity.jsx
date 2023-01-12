@@ -1,58 +1,18 @@
 import React from 'react';
 import { useParams } from "react-router";
 import { getUserActivityById } from '../mock/ApiData.mock';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
 
+/** render Graphiq Daily activity (Recharts)
+  * @param  {DailyActivity} function Component
+  * @param  {userActivity} array
+  * @return {JSX}
+  */
+export default function DailyActivity({userActivity}) {
 
-export default function DailyActivity() {
-// const [dataActivity, setDataActivity] = useState([])
-
-  const USER_ACTIVITY = [
-    {
-        day: '2020-07-01',
-        kilogram: 80,
-        calories: 240
-    },
-    {
-        day: '2020-07-02',
-        kilogram: 80,
-        calories: 220
-    },
-    {
-        day: '2020-07-03',
-        kilogram: 81,
-        calories: 280
-    },
-    {
-        day: '2020-07-04',
-        kilogram: 81,
-        calories: 290
-    },
-    {
-        day: '2020-07-05',
-        kilogram: 80,
-        calories: 160
-    },
-    {
-        day: '2020-07-06',
-        kilogram: 78,
-        calories: 162
-    },
-    {
-        day: '2020-07-07',
-        kilogram: 76,
-        calories: 390
-    }
-]
-
-
-
-for (let i = 0 ; i < USER_ACTIVITY.length ; i ++) {
-          let day = parseInt(USER_ACTIVITY[i].day.split('-')[2]);
-            USER_ACTIVITY[i].day = day; 
-        }
+  if (userActivity.length === 0) return null;
 
     const TooltipTag = ({active,payload}) => {
 
@@ -69,11 +29,6 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++) {
                  return;
                }
            }
-// const LegendTitle = () => {
-//   return(
-//       <><BoxLegend><div></div></BoxLegend></>
-//     )
-// }
 
       return (
         <BoxBarChart>
@@ -86,7 +41,7 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++) {
             barCategoryGap={1}
             barGap={6}
             maxBarSize={120}
-            data={USER_ACTIVITY}
+            data={userActivity}
             // strokeDasharray={'rgba(196, 196, 196, 0.5)'}
             margin={{
               top: 30,
@@ -97,13 +52,12 @@ for (let i = 0 ; i < USER_ACTIVITY.length ; i ++) {
           >
             <CartesianGrid strokeDasharray="1 1" vertical={false}/>
             <XAxis dataKey="day" domain={['dataMin', 'dataMax']} stroke="rgb(155, 158, 172)" dy={1} tickMargin={12}/>
-            <YAxis  dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax + 1']} stroke="rgb(155, 158, 172)" tickCount="6" axisLine={false} tickLine={false} tickMargin={10} type="number" />
-            <YAxis dataKey="calories" orientation="right" domain={['dataMin / 3', 'dataMax / 3']}  type="number"/>
+            <YAxis  dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax']} stroke="rgb(155, 158, 172)" tickCount="3" axisLine={false} tickLine={false} tickMargin={10} />
+            <YAxis dataKey="calories" orientation="right" domain={['dataMin / 3', 'dataMax / 3']}  />
             <Tooltip offset={23} 
                content={<TooltipTag/>}
                wrapperStyle={{ background: 'rgba(230, 0, 0, 1)', width: '39px', height:'63px', color:'#fff' , outline:"none"}} 
             />
-            {/* <Legend verticalAlign="top" height={36} content={<LegendTitle/>}  /> */}
             <Bar dataKey="kilogram" fill="rgba(40, 45, 48, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
             <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" barSize={6} radius={[50, 50, 0, 0]}/>
           </BarChart>

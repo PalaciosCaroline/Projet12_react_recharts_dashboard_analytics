@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'; 
 import {HeaderVertical, Footer, LiHeaderVertical, Nav} from './navverticale.styles'
 import { NavLink } from 'react-router-dom'
 import iconnatation from './../../assets/icon_natation.png'
@@ -6,7 +7,11 @@ import iconalter from './../../assets/icon_alter.png'
 import iconzen from './../../assets/icon_zen.png'
 import iconvelo from './../../assets/icon_velo.png'
 
-
+/** render Header_Main Nav
+  * @param  {HeaderVertical, Footer, LiHeaderVertical, Nav} function Component
+  * @param {iconnatation,iconalter, iconalter,  iconvelo} img
+  * @return {JSX}
+  */
 export default function Navverticale() {
   return (
     <HeaderVertical>
@@ -39,4 +44,8 @@ export default function Navverticale() {
       </Footer>
     </HeaderVertical>
   )
+}
+
+Navverticale.propTypes = {
+  img: PropTypes.any
 }

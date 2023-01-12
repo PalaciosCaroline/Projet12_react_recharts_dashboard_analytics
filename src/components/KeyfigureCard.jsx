@@ -1,10 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'; 
 import caloriesIcon from './../assets/calories-icon.png'
 import fatIcon from './../assets/fat-icon.png'
 import proteinIcon from './../assets/protein-icon.png'
 import carbsIcon from './../assets/carbs-icon.png'
 import styled from 'styled-components'
 
+/** 
+ * @param  {array} getImg
+ * @param  {img} let item of getImg
+ * @param  {string} type
+ * @param  {tring} value
+ * @return {JSX}
+ */
 export default function KeyfigureCard({type, value}) {
     
     const getImg = {
@@ -12,15 +20,7 @@ export default function KeyfigureCard({type, value}) {
         Protéines : proteinIcon,
         Glucides : carbsIcon,
         Lipides: fatIcon
-    }  
-
-    // const backgroundImg = {
-    //     Calories : 'rgba(255, 0, 0, 1)',
-    //         Protéines : 'rgba(74, 184, 255, 0.1)',
-    //         Glucides : '#F9CE23',
-    //         Lipides: 'rgba(253, 81, 129, 0.1)'
-    // }
-    
+    }   
 
   return (
     <Keyfigure>
@@ -33,6 +33,12 @@ export default function KeyfigureCard({type, value}) {
   )
 }
 
+KeyfigureCard.propTypes = {
+  getImg : PropTypes.array,
+  type: PropTypes.string,
+  value: PropTypes.string,
+}
+
 const Keyfigure = styled.article`
 box-sizing: border-box;
   background: rgba(251, 251, 251, 1);
@@ -42,6 +48,9 @@ box-sizing: border-box;
   @media (max-width: 1350px) {
     width:23%;
     padding:12px 8px 12px 12px;
+  }
+  span{
+    color:rgba(116, 121, 140, 1);
   }
   
 `
@@ -53,4 +62,5 @@ const Img = styled.img`
 
 const Title3 = styled.h3`
    margin:0;
+   
 `

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'; 
 import iconlogo from './../assets/logo_sportseeSVG.svg'
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
@@ -59,6 +60,11 @@ const LinkHeader = styled.a`
   font-weight: 500;
 `
 
+/** render Header_page Nav
+  * @param {iconlogo} img
+  * @return {JSX} functional component
+  */
+
 export default function Navhorizontale() {
   return (
     <Header>
@@ -87,4 +93,8 @@ export default function Navhorizontale() {
       </nav>
     </Header>
   )
+}
+
+Navhorizontale.propTypes = {
+  img: PropTypes.any
 }
