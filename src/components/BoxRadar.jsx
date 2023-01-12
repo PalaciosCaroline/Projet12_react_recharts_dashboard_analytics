@@ -1,49 +1,31 @@
-import React from 'react'
+import React, {useState, useEffect}  from 'react'
 import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import {formatterDataPerformance} from '../hooks/formatData'
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
-
-
+import { getData} from '../hooks/usefetch';
+import { useParams } from "react-router";
 
 export default function BoxRadar() {
+  const [userPerformance,setUserPerformance] = useState([])
+  let {id} = useParams();
 
- 
+  useEffect(() => {
+    const Performance = async () => {
+      const request = await getData(id, 'performance');
+      if (!request) return alert("data error");
+      const data = formatterDataPerformance(request.data.data)
+      setUserPerformance(data);
+    };
+    Performance();
+  }, [id]);
 
-
-
-      const data = [
-            {
-                value: 80,
-                kind: 'cardio'
-            },
-            {
-                value: 120,
-                kind:  'energy'
-            },
-            {
-                value: 140,
-                kind: 'endurance'
-            },
-            {
-                value: 50,
-                kind:'strength'
-            },
-            {
-                value: 200,
-                kind: 'speed'
-            },
-            {
-                value: 90,
-                kind: 'intensity'
-            }
-        ];
-   
-
+  if (userPerformance.length === 0) return null;
 
   return (
     <BoxRadarChart>
     <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data} >
+        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={userPerformance} >
           <PolarGrid gridType="polygon" />
          
           <PolarAngleAxis dataKey="kind"  tick={{ fontSize: 8 }} stroke='white' tickLine={false} axisLine={false}/>
@@ -80,5 +62,9 @@ const BoxRadarChart = styled.article`
   @media (max-width: 1010px) {
     width: 300px ;
     height: 300px;
+  } 
+  @media (max-width: 450px) {
+    width: 260px ;
+    height: 260px;
   } 
 `

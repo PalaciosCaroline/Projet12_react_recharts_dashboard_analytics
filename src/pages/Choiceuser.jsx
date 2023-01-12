@@ -1,19 +1,30 @@
 import React from 'react'
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styled from "styled-components";
 import {palette} from "../theme/styledvariable"
 
-const Title = styled.h1`
-    font-size:3rem;
-    color: black;
-    margin: 50px;
-`
+
+export default function Choiceuser() {
+  return (
+    <MainAccueil>
+      <h1>Accueil : Choice User</h1>
+      <nav>
+          <NavLink to="/user/12">USER 12</NavLink>
+          <NavLink to="/user/18">USER 18</NavLink>
+      </nav>
+    </MainAccueil>
+
+  )
+}
 
 const MainAccueil = styled.main`
   padding:68px 9% 88px 224px;
-`
-
-const NavLin = styled.a`
+  h1{
+    font-size:3rem;
+    color: black;
+    margin: 50px;
+  }
+  a{
     border:none;
     display:inline-block;
     text-align:center;
@@ -22,17 +33,5 @@ const NavLin = styled.a`
     margin: 50px;
     background-color: ${palette.colorSecondary};
     border-radius: 20px;
+  }
 `
-
-export default function Accueil() {
-  return (
-    <MainAccueil>
-      <Title>Accueil : Choice User</Title>
-      <nav>
-          <NavLin href="/user/12">USER 12</NavLin>
-          <NavLin href="/user/18">USER 18</NavLin>
-      </nav>
-    </MainAccueil>
-
-  )
-}

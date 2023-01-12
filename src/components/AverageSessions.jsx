@@ -1,5 +1,8 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { getData} from '../hooks/usefetch';
+import { formatterDataAverageSessions } from '../hooks/formatData';
+import { useParams } from "react-router";
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
@@ -7,75 +10,20 @@ import { palette } from './../theme/styledvariable'
 
 export default function AverageSessions() {
 
-     const data = [
-            {
-                day: 1,
-                sessionLength: 30
-            },
-            {
-                day: 2,
-                sessionLength: 23
-            },
-            {
-                day: 3,
-                sessionLength: 45
-            },
-            {
-                day: 4,
-                sessionLength: 50
-            },
-            {
-                day: 5,
-                sessionLength: 0
-            },
-            {
-                day: 6,
-                sessionLength: 0
-            },
-            {
-                day: 7,
-                sessionLength: 60
-            }
-        ]
+  const [userAverageSessions,setUserAverageSessions] = useState([])
+  let {id} = useParams();
 
-  
+  useEffect(() => {
+    const averageSessions = async () => {
+      const request = await getData(id, 'averageSessions');
+      if (!request) return alert("data error");
+      const data = formatterDataAverageSessions(request.data.sessions)
+      setUserAverageSessions(data);
+    };
+    averageSessions();
+  }, [id]);
 
-        function getDay(day) {
-            switch (day) {
-              case 1:
-                return  'L';
-        
-              case 2:
-                return  'M';
-        
-              case 3:
-                return  'M';
-        
-              case 4:
-                return 'J';
-              
-              case 5:
-                return  'V';
-        
-              case 6:
-                return 'S';
-            
-              case 7:
-                return 'D';
-            
-              default:
-                return ;
-            }
-          }
-
-    // for (let i = 0 ; i < data.length ; i ++) {
-    //   let day = getDay(data[i].day);
-    //    data[i].day = day ;
-    // }
-    for (let i = 0 ; i < data.length ; i ++) {
-      let day = getDay(data[i].day);
-       data[i].day = day ;
-    }
+  if (userAverageSessions.length == null) return null;
     
   const TooltipTagAverageSessions = ({active,payload}) => {
     if(active){
@@ -89,9 +37,6 @@ export default function AverageSessions() {
         }
   }
     
-
-
-
   return (
     <BoxLineChart>
       <LegendTitle>Durée moyenne des<br/> sessions</LegendTitle>
@@ -99,7 +44,7 @@ export default function AverageSessions() {
     <LineChart
       width={200}
       height={200}
-      data={data}
+      data={userAverageSessions}
       margin={{
         top: 5,
         right: 0,
@@ -108,14 +53,16 @@ export default function AverageSessions() {
       }}
     >
      
-      <XAxis dataKey="day" tickLine={true} padding={{right:10, left:10}} width='110%'/>
-      <YAxis  dataKey="sessionLength" hide={true} />
+      <XAxis dataKey="day" padding={{right:10, left:10}} stroke="rgba(255,255,255,0.6" axisLine={false}
+            dy={-10}
+            tickLine={false}/>
+      <YAxis  dataKey="sessionLength" hide={true} domain={['dataMin - 5', 'dataMax']}/>
       <Tooltip offset={23} 
                content={<TooltipTagAverageSessions/>}
                wrapperStyle={{ background: '#fff', width: '39px', height:'25px', color:'#000' , outline:"none"}} />
       {/* <Legend stroke={{color:'rgba(255,255,255,0.5'}} verticalalign="top" height={36} content={<LegendTitle/>}/> */}
       <Line type="monotone" 
-            dataKey="sessionLength" stroke="rgba(255,255,255,0.5" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
+            dataKey="sessionLength" stroke="rgba(255,255,255,0.6" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
     
     </LineChart>
   </ResponsiveContainer>
@@ -142,7 +89,7 @@ background-color: ${palette.colorSecondary};
   `
 
 const LegendTitle = styled.div`
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.7);
     padding:20px 10px 10px 34px;
     position:absolute;
 `

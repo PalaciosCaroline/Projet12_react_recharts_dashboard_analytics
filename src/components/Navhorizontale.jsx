@@ -4,26 +4,53 @@ import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
 const Header = styled.header`
-position: relative;
+  position: relative;
   z-index:2;
-  
+  min-height: 91px;
   width:100%;
+  
 `
  
 const UlHeader = styled.ul`
   font-size: 1.4rem;
-  height: 51px;
+  // min-height: 40px;
+  line-height : 91px;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
   display: flex;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: ${palette.colorHeader};
-  padding: 20px 8% 20px 2%;
+  padding: 0 8% 0 2%;
+  @media (max-width: 450px) {
+    padding: 0;
+  } 
+  a{
+    @media (max-width: 1000px) {
+      font-size: 1rem;
+      margin: 0 10px 0 10px;
+    } 
+    @media (max-width: 600px) {
+      font-size: 0.8rem;
+    } 
+    
+  }
+  
 `
 
 const Logohome = styled.a`
   width: 178px;
   display: block;
+  height:100%;
+  display: flex;
+  align-items: center;
+  @media (max-width: 600px) {
+    width: 60px;
+  } 
+  img{
+    @media (max-width: 600px) {
+      width:80px;
+    } 
+  }
 `
 
 const LinkHeader = styled.a`

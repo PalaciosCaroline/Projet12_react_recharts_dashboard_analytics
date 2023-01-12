@@ -1,68 +1,35 @@
 import React from 'react'
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer} from 'recharts';
-import { PieChart, Pie, Sector, Cell ,CartesianGrid} from 'recharts';
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, CartesianGrid} from 'recharts';
 import styled from 'styled-components'
+import { formatterDataScore } from '../hooks/formatData';
 
-const dataUser = 0.12;
-const LabelPourcent = dataUser * 100;
+export default function BoxScore({dataUser}) {
 
-// const data = [
-//   {
-//     fill: "#8884d8",
-//       todayScore: `${dataUser}`,
-//     name:`${LabelPourcent}% de vos objectif`
-//   },
-// ]
-const data = [
-  
-  {
-    fill: "transparent",
-    todayScore: 1,
- 
-  },
-  {
-    fill: "red",
-    todayScore: `${dataUser}`,
-    name:`${LabelPourcent}% de vos objectif`
-  },
-]
-
-
-export default function BoxScore() {
+  let {data, labelPourcent} = formatterDataScore(dataUser)
 
   return (
     <BoxRadialBarChart>
-
-    <TitleScore2>Score</TitleScore2>
-    <LegendOut><Span1>{LabelPourcent}%</Span1><br />de vos objectif</LegendOut>
-    <ResponsiveContainer width="100%" height="100%" >
-    
+      <TitleScore2>Score</TitleScore2>
+      <LegendOut><Span1>{labelPourcent}%</Span1><br />de vos objectif</LegendOut>
+      <ResponsiveContainer width="100%" height="100%" >
         <RadialBarChart cx="50%" cy="50%" innerRadius="20" outerRadius="160" barSize={13} data={data} > 
         <CartesianGrid strokeDasharray="1 1" vertical={false} horizontal={false}/>
           <RadialBar
-           background={{ fill: data[0].fill }}
-          // fill={{color:'red'}}
-         
-          track={{background: '#fff'}}
+            background={{ fill: data[0].fill }}        
+            track={{background: '#fff'}}
             minAngle={14}
-            // label={{ position: 'insideStart', fill: 'red' }}
             clockWise
             dataKey="todayScore"
           />
-        
         </RadialBarChart>
- 
       </ResponsiveContainer>
-
-
-      </BoxRadialBarChart>
+    </BoxRadialBarChart>
   )
 }
 
 const BoxRadialBarChart = styled.div`
   width: 263px ;
-  height: 263px;
-  
+  height: 263px; 
   @media (max-width: 1150px) {
     width: 245px ;
     height: 245px;
@@ -71,19 +38,20 @@ const BoxRadialBarChart = styled.div`
     width: 300px ;
     height: 300px;
   } 
+  @media (max-width: 450px) {
+    width: 260px ;
+    height: 260px;
+  } 
 `
-
 
 const TitleScore2 = styled.h2`
   font-size:0.9rem;
-  // margin-bottom: 40px;
-
   position: absolute;
   margin-top:24px;
   margin-left:30px;
   color:#20253A;
-  `
-  const LegendOut = styled.div`
+`
+const LegendOut = styled.div`
   position: absolute;
   left: 50%;
   top: 47%;
@@ -95,11 +63,10 @@ const TitleScore2 = styled.h2`
   background: #fff;
   border-radius: 50%;
   padding: 50px 60px 50px 60px;
-  
-  `;
+`;
 
-  const Span1=styled.span`
+const Span1=styled.span`
   font-size:1.4rem;
   font-weight: bold;
-  `
+`
 

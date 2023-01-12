@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 // import { useFetch } from './../hooks/useApi.hook'
 import { getUserInfosById } from '../mock/ApiData.mock';
 
-
+import { useApi ,useApi2, getUserInfos, getData} from '../hooks/usefetch';
 import { useParams } from "react-router";
 import KeyfigureCard from '../components/KeyfigureCard';
 import DailyActivity from '../components/DailyActivity';
@@ -14,30 +14,40 @@ import BoxRadar from './../components/BoxRadar';
 import BoxScore  from '../components/BoxScore';
 
 export default function Dashboard() {
-  const [userName, setUserName] = useState([])
-  // const [dataUserInfos,setDataUserInfos] = useState([])
+  // const [userName, setUserName] = useState([])
+  const [userInfos,setUserInfos] = useState([])
+  const [userPerformance,setUserPerformance] = useState([])
+  // const [firstName,setFirstName] = useState('')
     let { id } = useParams();
-
+    //id = parseInt(id)
     // let navigate = Navigate();
 
     // const user = () => {
     //   const routeParams = useParams();
     // };
-  
-    // const { data: datasUser } = useApi({
-    //     params: {
-    //       useId: `${userId}`
-    //     },
-    //     defaultValue: { results: [] }
-    //   });
 
-    //   console.log(datasUser)
+    // const { data: dataUser } = useApi({
+    //   params: {
+    //     userId : `${id}`
+    //   },
+    //   defaultValue: { results: [] }
+    // });
 
 
-  useEffect(() => {
-    let data = getUserInfosById(parseInt(id));
-    setUserName(data)
-  }, [id])
+    //   console.log(dataUser.data.userInfos)
+
+    useEffect(() => {
+      const data = async () => {
+        const request = await getData(id, 'mainInfos');
+        if (!request) return alert("data error");
+        setUserInfos(request.data);
+      };
+      data();
+    }, [id]);
+
+    if (userInfos.length === 0) return null;
+
+   
 
 
     let KeyData = {
@@ -52,7 +62,7 @@ export default function Dashboard() {
     
         <Wrapped>
           <BoxTitle>
-          <h1>Bonjour&ensp;<span>{userName}</span></h1>
+          <h1>Bonjour&ensp;<span>{userInfos.userInfos.firstName}</span></h1>
         
           <p>Félicitations ! Vous avez explosé vos objectifs hier
                 &nbsp;👏</p>
@@ -64,18 +74,14 @@ export default function Dashboard() {
                     <DailyActivity></DailyActivity>
                 </Activity>
                 <SessionWrapper>
-                  
-                  
                     <AverageSessions />
                    
                   {/* <StyleBoxRadar> */}
                     <BoxRadar />            
                   {/* </StyleBoxRadar> */}
                   <StyleBoxScore>
-                    <BoxScore />
+                    <BoxScore dataUser={userInfos}/>
                   </StyleBoxScore>
-
-                
                 </SessionWrapper>
               </Column1>
               <Keyfigures>
@@ -95,21 +101,30 @@ export default function Dashboard() {
 
 const Wrapped = styled.div`
   display: flex;
+  box-sizing:border-box;
   flex-direction : column;
-  padding:72px 90px 90px 224px;
-  width:100%;
+  // padding:72px 90px 90px 224px;
+  padding:72px 90px 90px 107px;
+  margin: auto;
+  // width:100%;
   heigth:100%;
   @media (max-width: 1400px) {
-    padding:40px 50px 50px 180px;
+    padding:40px 50px 50px 63px;
   } 
   @media (max-width: 1250px) {
-    padding:40px 70px 50px 210px;
+    padding:40px 70px 50px 107px;
   } 
-  // @media (max-width: 1150px) {
-  //   padding:40px 90px 50px 210px;
-  // } 
   @media (max-width: 1150px) {
-    padding:40px 40px 50px 160px;
+    padding:40px 40px 50px 43px;
+  } 
+  @media (max-width: 1100px) {
+    width:90%;
+  } 
+  @media (max-width: 1000px) {
+    width:80%;
+  } 
+  @media (max-width: 600px) {
+    padding:72px 20px 90px 20px;
   } 
 `
 
@@ -127,7 +142,7 @@ const BoxTitle = styled.header`
 const BoxResult = styled.section`
   display:flex;
   justify-content:space-between;
-  width:100%;
+  // width:100%;
   heigth:630px;
   gap:30px;
   @media (max-width: 1300px) {

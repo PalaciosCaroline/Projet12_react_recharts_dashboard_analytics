@@ -1,13 +1,10 @@
 import React from 'react'
-// import styled from 'styled-components'
 import {HeaderVertical, Footer, LiHeaderVertical, Nav} from './navverticale.styles'
-// import { palette } from '../../theme/styledvariable'
 import { NavLink } from 'react-router-dom'
 import iconnatation from './../../assets/icon_natation.png'
 import iconalter from './../../assets/icon_alter.png'
 import iconzen from './../../assets/icon_zen.png'
 import iconvelo from './../../assets/icon_velo.png'
-
 
 
 export default function Navverticale() {

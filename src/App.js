@@ -1,29 +1,40 @@
 // import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
+import Choiceuser from './pages/Choiceuser'
+import Dashboard from './pages/Dashboard'
+import Erreur404 from './pages/Erreur404'
 // import * as ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'
+
 import Navhorizontale from './components/Navhorizontale'
-import Navverticale from './components/Navverticale.module/Navverticale'
-import Router from './Router'
+import Navverticale from './components/Navverticale/Navverticale'
+import { BrowserRouter,Routes, Route} from "react-router-dom"
 import './App.css'
 import styled from 'styled-components'
 
-const Main = styled.main`
-  display: flex;
-  min-height: 934px;
-`
 
-function App() {
+
+export default function App() {
   ReactDOM.render(
     <BrowserRouter>
       <Navhorizontale />
       <Main>
         <Navverticale />
-        <Router />
+        <Routes>
+          <Route index path="/" element={<Choiceuser />} />
+          <Route path="/user/:id" element={<Dashboard />} />
+          <Route path="*" element={<Erreur404 />} />
+        </Routes>
       </Main>
     </BrowserRouter>,
     document.getElementById('root')
   )
 }
 
-export default App
+
+
+
+const Main = styled.main`
+  display: flex;
+  min-height: 934px;
+  height:auto;
+`

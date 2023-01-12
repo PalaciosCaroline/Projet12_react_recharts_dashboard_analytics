@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 
 export default function DailyActivity() {
+// const [dataActivity, setDataActivity] = useState([])
 
   const USER_ACTIVITY = [
     {
@@ -45,6 +46,8 @@ export default function DailyActivity() {
         calories: 390
     }
 ]
+
+
 
 for (let i = 0 ; i < USER_ACTIVITY.length ; i ++) {
           let day = parseInt(USER_ACTIVITY[i].day.split('-')[2]);
