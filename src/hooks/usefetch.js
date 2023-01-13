@@ -148,6 +148,7 @@ export const getData = async (id, type) => {
       res = null;
   }
   return res.data;
-} catch (e) {
-  console.log(e);
-}}
+  } catch (e) {
+    console.log(e);
+  }
+}
