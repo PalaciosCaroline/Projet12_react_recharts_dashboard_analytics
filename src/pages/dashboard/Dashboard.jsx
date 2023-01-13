@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 // import { getUserInfosById } from '../mock/ApiData.mock'
-import { useApi, getData } from '../hooks/usefetch'
+import { useApi, getData } from '../../hooks/usefetch'
 import { useParams } from 'react-router'
-import KeyfigureCard from '../components/KeyfigureCard'
-import DailyActivity from '../components/DailyActivity'
-import styled from 'styled-components'
-import { palette } from './../theme/styledvariable'
-import AverageSessions from './../components/Averagesessions/AverageSessions'
-import BoxRadar from './../components/BoxRadar'
-import BoxScore from '../components/BoxScore'
+import KeyfigureCard from '../../components/keyfigurecard/KeyfigureCard'
+import DailyActivity from '../../components/dailyactivity/DailyActivity'
+import AverageSessions from '../../components/averagesessions/AverageSessions'
+import BoxRadar from '../../components/boxradar/BoxRadar'
+import BoxScore from '../../components/boxscore/BoxScore'
 import {
   formatterDataPerformance,
   formatterDataAverageSessions,
   formatterDataActivity,
   formatterKilo,
-} from '../utils/formatData'
+} from '../../utils/formatData'
+import {Keyfigures,SessionWrapper,Column1,BoxResult,BoxTitle,Wrapped} from './dashboard.style'
 
 /** render Main Dashboard
  * @param { id } string
@@ -143,120 +142,3 @@ Dashboard.propTypes = {
   labelPourcent: PropTypes.number,
 }
 
-const Wrapped = styled.div`
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  // padding:72px 90px 90px 224px;
-  padding: 72px 90px 90px 107px;
-  margin: auto;
-  // width:100%;
-  heigth: 100%;
-  @media (max-width: 1400px) {
-    padding: 40px 50px 50px 63px;
-  }
-  @media (max-width: 1250px) {
-    padding: 40px 70px 50px 107px;
-  }
-  @media (max-width: 1150px) {
-    padding: 40px 40px 50px 43px;
-  }
-  @media (max-width: 1100px) {
-    width: 90%;
-  }
-  @media (max-width: 1000px) {
-    width: 80%;
-  }
-  @media (max-width: 600px) {
-    padding: 72px 20px 90px 20px;
-  }
-`
-
-const BoxTitle = styled.header`
-  margin-bottom: 50px;
-  h1 {
-    font-size: 3rem;
-    margin: 0 0 25px 0;
-  }
-  span {
-    color: ${palette.colorName};
-  }
-`
-
-const BoxResult = styled.section`
-  display: flex;
-  justify-content: space-between;
-  // width:100%;
-  heigth: 630px;
-  gap: 30px;
-  @media (max-width: 1300px) {
-    flex-direction: column;
-    height: auto;
-    gap: 20px;
-  }
-`
-const Column1 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 30px;
-
-  @media (max-width: 1250px) {
-    width: 100%;
-    gap: 20px;
-  }
-`
-
-// const Activity = styled.section`
-//   color: rgba(0,0,0,0.2);
-//   background-color:rgba(251, 251, 251, 1);
-//   width:100%;
-
-// `
-const SessionWrapper = styled.section`
-  color: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  display: flex;
-  heigth: 263px;
-  gap: 30px;
-  justify-content: space-between;
-  @media (max-width: 1250px) {
-    width: 100%;
-    flex-wrap: wrap;
-    height: auto;
-  }
-  @media (max-width: 1010px) {
-    justify-content: space-around;
-  }
-`
-
-const Keyfigures = styled.section`
-  // width:23%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
-  justify-content: space-between;
-  @media (max-width: 1300px) {
-    width: 100%;
-  }
-  article {
-    min-width: 160px;
-    width: 100%;
-    heigth: 124px;
-    @media (max-width: 1300px) {
-      width: 43%;
-      gap: 30px;
-      margin-top: 30px;
-    }
-    @media (max-width: 680px) {
-      width: 90%;
-      gap: 20px;
-      margin: 30px auto 20px;
-    }
-  }
-`
-
-// const StyleBoxScore = styled.article`
-//   position:relative;
-//   background-color: rgba(251, 251, 251, 1);
-// `

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import styled from 'styled-components';
-
+import { BoxBarChart,TitleLegendActivity,LegendBox,TagPoids,TagCalories,BoxTooltipTag,SpanTooltip1,SpanTooltip2} from './dailyactivity.style'
 
 /** render Graphiq BarChart Recharts of daily activity
   * @type  {JSX FC React} TooltipTag
@@ -76,67 +75,4 @@ export default function DailyActivity({userActivity}) {
     labelPourcent: PropTypes.number,
   }
   
-  const BoxBarChart = styled.div`
-  width: 100% ;
-  height: 320px;
-  color: rgba(0,0,0,0.2);
-  background-color:rgba(251, 251, 251, 1);
-`
-
-  const TitleLegendActivity = styled.div`
-  position:relative;
-  display:flex;
-  justify-content: space-between;
-  width:90%;
-  top:24px;
-  margin-bottom:68px;
-  margin-left:32px;
-  font-size:0.9rem;
-  font-weight:500;
-  color: rgba(32, 37, 58, 1);
-  h2{
-    font-size:0.9rem;
-    font-weight:500;
-    margin:0;
-  }
-  `
-
-  const LegendBox = styled.div`
-    display: flex;
-    font-size:0.9rem;
-  `
-  const TagPoids = styled.div`
-  
-    width:3px;
-    heigth:3px;
-    border-radius:50%;
-    align-self: center;
-    background-color: rgba(40, 45, 48, 1);
-    margin-right:5px;
-    padding:4px;
-  `
-  const TagCalories = styled.div`
-    width:3px;
-    heigth:3px;
-    align-self: center;
-    border-radius:50%;
-    background-color: rgba(230, 0, 0, 1);
-    margin-right:5px;
-    padding:4px;
-  `
-
-  const BoxTooltipTag = styled.div`
-    font-size:0.5rem;
-    text-align : center;
-    padding:8px 0 8px 0;
-    
-  `
-
-  const SpanTooltip1 = styled.div`
-    height:50%;
-  `
-  const SpanTooltip2 = styled.div`
-    height:50%;
-  `
  
-  
