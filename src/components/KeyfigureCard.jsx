@@ -7,11 +7,11 @@ import carbsIcon from './../assets/carbs-icon.png'
 import styled from 'styled-components'
 
 /** 
- * @param  {array} getImg
- * @param  {img} let item of getImg
  * @param  {string} type
  * @param  {tring} value
- * @return {JSX}
+ * @typeof  {Array} getImg 
+ * @param  {img} let item of getImg
+ * @return {JSX FC}
  */
 export default function KeyfigureCard({type, value}) {
     

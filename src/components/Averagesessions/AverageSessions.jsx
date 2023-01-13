@@ -1,8 +1,9 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import styled from 'styled-components'
-import { palette } from './../theme/styledvariable'
+import {LegendTitle,BoxTooltipTag,SpanTooltip,BoxLineChart} from './averagesessions.style'
 
-/** 
+/** render Graphiq LineChart Recharts of average sessions 
   * @param  {AverageSessions} function Component
   * @param  {userAverageSessions} array
   * @return {JSX}
@@ -23,12 +24,6 @@ export default function AverageSessions({userAverageSessions}) {
           return;
         }
   }
-
-  // TooltipTagAverageSessions.propTypes = {
-  //   active: PropTypes.boolean,
-  //   payload: PropTypes.array,
-  // };
-  
     
   return (
     <BoxLineChart>
@@ -61,39 +56,12 @@ export default function AverageSessions({userAverageSessions}) {
   )
 }
 
+AverageSessions.propTypes = {
+  userAverageSessions : PropTypes.array,
+  TooltipTagAverageSessions : PropTypes.element,
+  active: PropTypes.bool,
+  payload : PropTypes.array,
+  day : PropTypes.number,
+  sessionLength : PropTypes.number,
+}
 
-
-const BoxLineChart = styled.article`
-background-color: ${palette.colorSecondary};
-  color:#fff;
-  width:263px;
-  width:263px;
-
-  @media (max-width: 1150px) {
-    flex-wrap:wrap;
-    width:245px;
-    height:245px;
-  }
-  @media (max-width: 1010px) {
-    flex-wrap:wrap;
-    width:100%;
-    height:263px;
-  }
-  `
-
-const LegendTitle = styled.div`
-  color: rgba(255,255,255,0.7);
-    padding:20px 10px 10px 34px;
-    position:absolute;
-`
-
-const BoxTooltipTag = styled.div`
-    font-size:0.5rem;
-    text-align : center;
-    padding:8px 0 8px 0;
-    
-  `
-
-  const SpanTooltip = styled.div`
-    font-weight:bold;
-  `

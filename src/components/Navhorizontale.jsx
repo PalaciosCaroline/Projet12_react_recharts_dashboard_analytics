@@ -61,8 +61,8 @@ const LinkHeader = styled.a`
 `
 
 /** render Header_page Nav
-  * @param {iconlogo} img
-  * @return {JSX} functional component
+  * @param {img} iconlogo
+  * @return {JSX FC React} 
   */
 
 export default function Navhorizontale() {

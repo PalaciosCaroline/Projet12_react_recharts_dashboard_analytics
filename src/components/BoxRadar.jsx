@@ -1,12 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components'
 import { palette } from './../theme/styledvariable'
 
-/** render Graphiq Radar performance (Recharts)
-  * @param  {BoxRadar} function Component
-  * @param  {userPerformance} array
-  * @return {JSX}
+/** render Graphiq RadarChart Recharts of performance 
+  * @param  {Array} userPerformance
+  * @return {JSX FC React}
   */
 export default function BoxRadar({userPerformance}) {
 
@@ -23,6 +23,12 @@ export default function BoxRadar({userPerformance}) {
       </ResponsiveContainer>
     </BoxRadarChart>
   )
+}
+
+BoxRadar.propTypes = {
+  userPerformance : PropTypes.array,
+  king: PropTypes.string,
+  value: PropTypes.number
 }
 
 

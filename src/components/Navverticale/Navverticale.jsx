@@ -8,8 +8,8 @@ import iconzen from './../../assets/icon_zen.png'
 import iconvelo from './../../assets/icon_velo.png'
 
 /** render Header_Main Nav
-  * @param  {HeaderVertical, Footer, LiHeaderVertical, Nav} function Component
-  * @param {iconnatation,iconalter, iconalter,  iconvelo} img
+  * @param  {JSX FC} HeaderVertical, Footer, LiHeaderVertical, Nav
+  * @param { img} iconnatation,iconalter, iconalter,  iconvelo
   * @return {JSX}
   */
 export default function Navverticale() {
