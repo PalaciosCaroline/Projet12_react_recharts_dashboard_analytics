@@ -123,6 +123,11 @@ const api = axios.create({
   baseURL: `http://localhost:3000`
 });
 
+/** function de récupération des données de l'api
+ * @param {string} id 
+ * @param {string} type 
+ * @returns {promise} res.data
+ */
 export const getData = async (id, type) => {
   try {
     let res = {}

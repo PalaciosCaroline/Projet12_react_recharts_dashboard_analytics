@@ -25,7 +25,6 @@ import {Keyfigures,SessionWrapper,Column1,BoxResult,BoxTitle,Wrapped} from './da
  * @type {function} formatterDataPerformance, formatterDataAverageSessions, formatterDataActivity, * *        formatterKilofunction JS
  * @return {JSX FC React}
  */
-
 export default function Dashboard() {
   const [userInfos, setUserInfos] = useState([])
   const [userPerformance, setUserPerformance] = useState([])
