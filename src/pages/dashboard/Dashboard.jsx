@@ -50,7 +50,7 @@ export default function Dashboard() {
   useEffect(() => {
     const data = async () => {
       const request = await getData(id, 'mainInfos')
-      if (!request) return alert('data error')
+      if (!request) return alert( 'Une erreur s\'est produite lors de la récupération des données générales')
       setUserInfos(request.data)
     }
     data()
@@ -59,7 +59,7 @@ export default function Dashboard() {
   useEffect(() => {
     const averageSessions = async () => {
       const res = await getData(id, 'averageSessions')
-      if (!res) return alert('data error')
+      if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de durée moyenne des sessions')
       const data = formatterDataAverageSessions(res.data.sessions)
       setUserAverageSessions(data)
     }
@@ -69,7 +69,7 @@ export default function Dashboard() {
   useEffect(() => {
     const performance = async () => {
       const res = await getData(id, 'performance')
-      if (!res) return alert('data error')
+      if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de performance')
       const data = formatterDataPerformance(res.data.data)
       setUserPerformance(data)
     }
@@ -79,7 +79,7 @@ export default function Dashboard() {
   useEffect(() => {
     const activity = async () => {
       const res = await getData(id, 'activity')
-      if (!res) return alert('data error')
+      if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données sur l\'activité quotidienne')
       const data = formatterDataActivity(res.data.sessions)
       setUserActivity(data)
     }

@@ -120,9 +120,8 @@ export function useApi2(userId) {
 
 //Appel actuelle à l'api
 const api = axios.create({
-  baseURL: `http://localhost:3000/user`
+  baseURL: `http://localhost:3000`
 });
-
 
 export const getData = async (id, type) => {
   try {
