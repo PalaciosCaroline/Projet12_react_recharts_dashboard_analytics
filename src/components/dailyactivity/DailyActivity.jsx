@@ -50,8 +50,8 @@ export default function DailyActivity({userActivity}) {
               }}
             >
               <CartesianGrid strokeDasharray="1 1" vertical={false}/>
-              <XAxis dataKey="day" domain={['dataMin', 'dataMax']} stroke="rgb(155, 158, 172)" dy={1} tickMargin={12}/>
-              <YAxis  dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax']} stroke="rgb(155, 158, 172)" tickCount="3" axisLine={false} tickLine={false} tickMargin={10} />
+              <XAxis dataKey="day" domain={['dataMin', 'dataMax']} stroke="rgb(155, 158, 172)" dy={1} tickMargin={12} tickLine={false}/>
+              <YAxis  dataKey="kilogram" orientation="right" domain={['dataMin - 1', 'dataMax']} stroke="rgb(155, 158, 172)" tickCount="3" axisLine={false} tickLine={false} tickMargin={10} allowDecimals={false}/>
               <YAxis dataKey="calories" orientation="right" domain={['dataMin / 3', 'dataMax / 3']}  />
               <Tooltip offset={23} 
                 content={<TooltipTag/>}

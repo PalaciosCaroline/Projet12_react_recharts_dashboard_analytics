@@ -9,7 +9,12 @@ import { createGlobalStyle } from 'styled-components';
     margin: 0;
     padding: 0;
     height:100vh;
-    // box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ul, li{

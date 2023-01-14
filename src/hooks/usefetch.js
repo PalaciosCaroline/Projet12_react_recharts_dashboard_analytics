@@ -82,39 +82,50 @@ export const getUserPerformance = async (id) => {
 };
 
 
-export function useApi2(userId) {
+export function useApi2(userId,service) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const urlRest = getRestUrl(userId, service) 
 
   useEffect(() => {
-    if (!userId) return;
 
+    if (!userId) return;
     setIsLoading(true);
 
     async function fetchData() {
       try {
-        const url = `http://localhost:3000/user/${userId}`;
-      
+        const url = `http://localhost:3000/user/${urlRest}`;
         const response = await fetch(url);
         const data = await response.json();
-       
-
-        setData(data);
+        setData(data.data);
       } catch (err) {
-        console.error(`An error occured while fetching`);
-
+        console.error(`An error occured with fetch`);
         setError(true);
       } finally {
         setIsLoading(false);
       }
     }
-
     fetchData();
   }, [userId]);
 
   return { data, isLoading, error };
+}
+
+function getRestUrl(userId, service) {
+  switch (service) {
+    case "performance":
+      return `${userId}/performance`;
+    case "average-sessions":
+      return `${userId}/average-sessions`;
+    case "daily-activity":
+      return `${userId}/activity`;
+    case "mainInfos":
+      return `${userId}`;
+    default:
+      return null;
+  }
 }
 
 
@@ -133,14 +144,14 @@ export const getData = async (id, type) => {
     let res = {}
   switch (type) {
     case "activity":
-       res = await api.get(`http://localhost:3000/user/${id}/activity`);
-      break;
-    case "performance":
-     res = await api.get(`http://localhost:3000/user/${id}/performance`);
-      break;
+      res = await api.get(`http://localhost:3000/user/${id}/activity`);
+    break;
     case "averageSessions":
       res = await api.get(`http://localhost:3000/user/${id}/average-sessions`);
-      break;
+    break;
+    case "performance":
+      res = await api.get(`http://localhost:3000/user/${id}/performance`);
+    break;
     case "mainInfos":
       res = await api.get(`http://localhost:3000/user/${id}`);
       break;
