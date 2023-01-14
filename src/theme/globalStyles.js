@@ -23,9 +23,12 @@ import { createGlobalStyle } from 'styled-components';
     text-decoration: none;
     color:white;
   }
-
-
-}`
+  .main_app{
+    display: flex;
+    min-height: 934px;
+    height:auto;
+  }
+`
 
 
 export default GlobalStyle;

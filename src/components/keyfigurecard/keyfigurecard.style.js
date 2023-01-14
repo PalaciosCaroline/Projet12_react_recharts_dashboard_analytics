@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Keyfigure = styled.article`
-    box-sizing: border-box;
+  box-sizing: border-box;
   background: rgba(251, 251, 251, 1);
   display:flex;
   align-items: center;

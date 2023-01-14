@@ -5,6 +5,7 @@ export const BoxBarChart = styled.div`
   height: 320px;
   color: rgba(0,0,0,0.2);
   background-color:rgba(251, 251, 251, 1);
+  overflow:hidden;
 `
 
 export const TitleLegendActivity = styled.div`

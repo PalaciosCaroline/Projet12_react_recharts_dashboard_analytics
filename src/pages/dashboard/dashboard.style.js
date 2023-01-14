@@ -9,6 +9,7 @@ flex-direction: column;
 padding: 72px 90px 90px 107px;
 margin: auto;
 heigth: 100%;
+max-width:1700px;
 @media (max-width: 1400px) {
   padding: 40px 50px 50px 63px;
 }
@@ -93,6 +94,7 @@ article {
   min-width: 160px;
   width: 100%;
   heigth: 124px;
+  max-width:300px;
   @media (max-width: 1300px) {
     width: 43%;
     gap: 30px;
