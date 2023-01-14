@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from 'recharts'
-import { formatterDataScore } from '../../utils/formatData'
+import { formatDataScore } from '../../utils/formatData'
 import {BoxRadialBarChart, LegendOut} from './boxscore.style'
 
 /** render Graphiq RadialBarChart Recharts of Score
@@ -15,7 +15,7 @@ import {BoxRadialBarChart, LegendOut} from './boxscore.style'
  * @return {JSX FC}
  */
 export default function BoxScore({ dataUser }) {
-  let { data, labelPourcent } = formatterDataScore(dataUser)
+  let { data, labelPourcent } = formatDataScore(dataUser)
 
   return (
     <BoxRadialBarChart>

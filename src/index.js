@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactDOM from 'react-dom/client';
 import GlobalStyle from './theme/globalStyles';
 import { createRoot } from 'react-dom/client';
 import App from './App';

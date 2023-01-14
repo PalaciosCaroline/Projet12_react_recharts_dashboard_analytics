@@ -3,17 +3,18 @@ import styled from "styled-components";
 export const Erreurmain = styled.main`
   margin:10%;
   text-align: center;
+  color: #000;
+  margin: 60px auto;
   h1{
-        margin: 3rem 0 4rem 0;
-        font-size: 18rem;
+        // margin: 3rem 0 4rem 0;
+        font-size: 6rem;
         font-weight: 700;
         @media (max-width: 900px) {
         margin: 8rem 0 1rem 0;
-        font-size: 8rem;
         }
         @media (max-width: 550px) {
-        margin: 6rem 0 1rem 0;
-        font-size: 6rem;
+        // margin: 6rem 0 1rem 0;
+        font-size: 3rem;
         }
     }
     h2{
@@ -33,11 +34,11 @@ export const Erreurmain = styled.main`
     }
     a{
         display: inline-block;
-        margin: 7rem 0;
+        color:#000;
+        margin-top:30px;
         font-size: 1.2rem;
         text-decoration: underline;
         @media (max-width: 900px) {
-          margin: 4rem 0;
           font-size: 1.2rem;
         }
         @media (max-width: 550px) {

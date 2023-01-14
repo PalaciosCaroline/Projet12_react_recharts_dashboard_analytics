@@ -1,10 +1,10 @@
 
 /** Formatter data of BoxRadar functional component
   * @param  {function} formatterDataPerformance
-  * @param  {object} data
-  * @return {formatData => object} data with value of props king formatter 
+  * @param  {(value:number, king: number) => object} data
+  * @return {{value: number, king: string} => object} formatData with value of props king formatter 
   */ 
-export function formatterDataPerformance(data){
+export function formatDataPerformance(data){
     const InverseDataKing = data.sort((a, b) => (b.king > a.king ? 1 : -1))
     const formatData = InverseDataKing.map((data) => { 
         switch (data.kind) {
@@ -32,7 +32,7 @@ export function formatterDataPerformance(data){
   * @param  {object} dataUser
   * @return {(data => object, labelPourcent => number)} 
   */  
-export function formatterDataScore(dataUser){
+export function formatDataScore(dataUser){
     const score =  dataUser.todayScore ? dataUser.todayScore : dataUser.score;
     const labelPourcent = score * 100;
     const data = [
@@ -51,10 +51,10 @@ export function formatterDataScore(dataUser){
           
 /** Formatter data of AverageSessions functional component
   * @param  {function} formatterDataAverageSessions
-  * @param  {object} data
-  * @return {formatData => object} data with props day formatter
+  * @param  {{day: number, sessionLength: number} => object} data
+  * @return {{day: string, sessionLength: number} => object} formatData with props day formatter
   */    
-export function formatterDataAverageSessions(data){
+export function formatDataAverageSessions(data){
 
     const formatData = data.map((data) => { 
         switch (data.day) {
@@ -88,10 +88,10 @@ export function formatterDataAverageSessions(data){
 
 /** Formatter data of DailyActivity functional component
   * @typedef {function} formatterDataActivity
-  * @param  {object} data
-  * @return {data => object} data with value day formatter
+  * @param  {{day: number, kilogram: number, calories: number} => object} data
+  * @return {{day: number, kilogram: number, calories: number} => object} data with value day formatter
   */
-export function formatterDataActivity(data) {
+export function formatDataActivity(data) {
     for (let i = 0 ; i < data.length ; i ++) {
         let day = parseInt(data[i].day.split('-')[2]);
           data[i].day = day; 
@@ -104,7 +104,7 @@ export function formatterDataActivity(data) {
   * @param  {number} value
   * @return {str => string} with new formatter (with ',' for kilo)
   */
-export function formatterKilo(value){
+export function formatKilo(value){
     // let data = new Intl.NumberFormat("en-IN", {style: "decimal", maximumFractionDigits: 0}.format(value));
         var str = value.toString().split(".");
         str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");

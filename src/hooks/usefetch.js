@@ -1,4 +1,3 @@
-// import { useParams } from "react-router";
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
@@ -69,66 +68,6 @@ export const useApi = ({
 };
 
 
-
-
-
-export const getUserPerformance = async (id) => {
-  try {
-    const res = await api.get(`http://localhost:3000/user/${id}/performance`);
-    return res.data;
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-
-export function useApi2(userId,service) {
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  const urlRest = getRestUrl(userId, service) 
-
-  useEffect(() => {
-
-    if (!userId) return;
-    setIsLoading(true);
-
-    async function fetchData() {
-      try {
-        const url = `http://localhost:3000/user/${urlRest}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        setData(data.data);
-      } catch (err) {
-        console.error(`An error occured with fetch`);
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, [userId]);
-
-  return { data, isLoading, error };
-}
-
-function getRestUrl(userId, service) {
-  switch (service) {
-    case "performance":
-      return `${userId}/performance`;
-    case "average-sessions":
-      return `${userId}/average-sessions`;
-    case "daily-activity":
-      return `${userId}/activity`;
-    case "mainInfos":
-      return `${userId}`;
-    default:
-      return null;
-  }
-}
-
-
 //Appel actuelle à l'api
 const api = axios.create({
   baseURL: `http://localhost:3000`
@@ -142,23 +81,23 @@ const api = axios.create({
 export const getData = async (id, type) => {
   try {
     let res = {}
-  switch (type) {
-    case "activity":
-      res = await api.get(`http://localhost:3000/user/${id}/activity`);
-    break;
-    case "averageSessions":
-      res = await api.get(`http://localhost:3000/user/${id}/average-sessions`);
-    break;
-    case "performance":
-      res = await api.get(`http://localhost:3000/user/${id}/performance`);
-    break;
-    case "mainInfos":
-      res = await api.get(`http://localhost:3000/user/${id}`);
+    switch (type) {
+      case "activity":
+        res = await api.get(`http://localhost:3000/user/${id}/activity`);
+      break;
+      case "averageSessions":
+        res = await api.get(`http://localhost:3000/user/${id}/average-sessions`);
+      break;
+      case "performance":
+        res = await api.get(`http://localhost:3000/user/${id}/performance`);
+      break;
+      case "mainInfos":
+        res = await api.get(`http://localhost:3000/user/${id}`);
       break;
       default: 
-      res = null;
-  }
-  return res.data;
+      return res = null;
+    }
+    return res.data;
   } catch (e) {
     console.log(e);
   }

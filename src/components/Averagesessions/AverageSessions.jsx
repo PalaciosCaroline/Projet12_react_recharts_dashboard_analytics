@@ -23,12 +23,33 @@ export default function AverageSessions({userAverageSessions}) {
           return;
         }
   }
-    
+
+  const animateBgColor = (e) => {
+    let boxContainer = document.querySelector('.a-DYnx')
+    if (e.isTooltipActive === true) {
+      let windowWidth = boxContainer.clientWidth
+      let mouseXpercentage = Math.round(
+        (e.activeCoordinate.x / windowWidth) * 100
+      )
+      boxContainer.style.background = `linear-gradient(90deg, hsla(0, 100%, 50%, 1)
+      ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) 100%)`
+    } else {
+      boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
+    }
+  }
+
+  const stopAnimateBgColor = () => {
+    let boxContainer = document.querySelector('.a-DYnx')
+    boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
+  }
+  
   return (
     <BoxLineChart>
       <LegendTitle>Durée moyenne des<br/> sessions</LegendTitle>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
+        onMouseMove={(e) => {animateBgColor(e)}}
+        onMouseLeave={() => {stopAnimateBgColor()}}
           width={200}
           height={200}
           data={userAverageSessions}
@@ -42,11 +63,12 @@ export default function AverageSessions({userAverageSessions}) {
           <XAxis dataKey="day" padding={{right:10, left:10}} stroke="rgba(255,255,255,0.6" axisLine={false}
                 dy={-10}
                 tickLine={false}/>
-          <YAxis  dataKey="sessionLength" hide={true} domain={['dataMin - 3', 'dataMax + 10']}/>
-          <Tooltip 
+          <YAxis  dataKey="sessionLength" hide={true} domain={['dataMin - 5', 'dataMax + 10']}/>
+          <Tooltip  
                   content={<TooltipTagAverageSessions/>}
                   wrapperStyle={{ background: '#fff', width: '39px', height:'25px', color:'#000' , outline:"none"}} 
-                  cursor={{stroke: "transparent"}}/>
+                  cursor={{stroke: "transparent"}}
+                  />
           <Line type="monotone" 
                 dataKey="sessionLength" stroke="rgba(255,255,255,0.6" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
         </LineChart>

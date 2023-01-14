@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 export const BoxLineChart = styled.article`
-background-color: ${palette.colorSecondary};
+  background-color: ${palette.colorSecondary};
   color:#fff;
   width:263px;
   width:263px;

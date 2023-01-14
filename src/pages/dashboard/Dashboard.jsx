@@ -9,11 +9,15 @@ import AverageSessions from '../../components/averagesessions/AverageSessions'
 import BoxRadar from '../../components/boxradar/BoxRadar'
 import BoxScore from '../../components/boxscore/BoxScore'
 import {
-  formatterDataPerformance,
-  formatterDataAverageSessions,
-  formatterDataActivity,
-  formatterKilo,
+  formatDataPerformance,
+  formatDataAverageSessions,
+  formatDataActivity,
+  formatKilo,
 } from '../../utils/formatData'
+import caloriesIcon from './../../assets/calories-icon.png'
+import fatIcon from './../../assets/fat-icon.png'
+import proteinIcon from './../../assets/protein-icon.png'
+import carbsIcon from './../../assets/carbs-icon.png'
 import {Keyfigures,SessionWrapper,Column1,BoxResult,BoxTitle,Wrapped} from './dashboard.style'
 
 /** render Main Dashboard
@@ -22,7 +26,7 @@ import {Keyfigures,SessionWrapper,Column1,BoxResult,BoxTitle,Wrapped} from './da
  * @type {FC React} BoxScore,BoxScore,AverageSessions, DailyActivity, KeyfigureCard
  * @type {function(id:string, type:string) => promise} getData
  * @type {object} userInfos userPerformance userAverageSessions userActivity
- * @type {function} formatterDataPerformance, formatterDataAverageSessions, formatterDataActivity, * *        formatterKilofunction JS
+ * @type {function} formatDataPerformance, formatDataAverageSessions, formatDataActivity, * *        formatKilofunction JS
  * @return {JSX FC React}
  */
 export default function Dashboard() {
@@ -59,7 +63,7 @@ export default function Dashboard() {
     const averageSessions = async () => {
       const res = await getData(id, 'averageSessions')
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de durée moyenne des sessions')
-      const data = formatterDataAverageSessions(res.data.sessions)
+      const data = formatDataAverageSessions(res.data.sessions)
       setUserAverageSessions(data)
     }
     averageSessions()
@@ -69,7 +73,7 @@ export default function Dashboard() {
     const performance = async () => {
       const res = await getData(id, 'performance')
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de performance')
-      const data = formatterDataPerformance(res.data.data)
+      const data = formatDataPerformance(res.data.data)
       setUserPerformance(data)
     }
     performance()
@@ -79,14 +83,14 @@ export default function Dashboard() {
     const activity = async () => {
       const res = await getData(id, 'activity')
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données sur l\'activité quotidienne')
-      const data = formatterDataActivity(res.data.sessions)
+      const data = formatDataActivity(res.data.sessions)
       setUserActivity(data)
     }
     activity()
   }, [id])
 
   if (userInfos.length === 0) return null
-  let valueKilo = formatterKilo(userInfos.keyData.calorieCount)
+  let valueKilo = formatKilo(userInfos.keyData.calorieCount)
 
   return (
     <Wrapped>
@@ -106,18 +110,21 @@ export default function Dashboard() {
           </SessionWrapper>
         </Column1>
         <Keyfigures>
-          <KeyfigureCard type="Calories" value={valueKilo} />
+          <KeyfigureCard  img={caloriesIcon} type="Calories" value={`${valueKilo}Kcal`} />
           <KeyfigureCard
+            img={proteinIcon}
             type="Protéines"
-            value={userInfos.keyData.proteinCount.toString()}
+            value={`${userInfos.keyData.proteinCount.toString()}g`}
           />
           <KeyfigureCard
+            img={carbsIcon}
             type="Glucides"
-            value={userInfos.keyData.carbohydrateCount.toString()}
+            value={`${userInfos.keyData.carbohydrateCount.toString()}g`}
           />
           <KeyfigureCard
+            img={fatIcon}
             type="Lipides"
-            value={userInfos.keyData.lipidCount.toString()}
+            value={`${userInfos.keyData.lipidCount.toString()}g`}
           />
         </Keyfigures>
       </BoxResult>
