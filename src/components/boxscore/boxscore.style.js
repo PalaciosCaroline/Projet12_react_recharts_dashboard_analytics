@@ -17,15 +17,15 @@ export const BoxRadialBarChart = styled.div`
     width: 260px;
     height: 260px;
   }
+  h2{
+    font-size: 0.9rem;
+    position: absolute;
+    margin-top: 24px;
+    margin-left: 30px;
+    color: #20253a;
+  }
 `
 
-export const TitleScore2 = styled.h2`
-  font-size: 0.9rem;
-  position: absolute;
-  margin-top: 24px;
-  margin-left: 30px;
-  color: #20253a;
-`
 export const LegendOut = styled.div`
   position: absolute;
   left: 50%;
@@ -38,9 +38,9 @@ export const LegendOut = styled.div`
   background: #fff;
   border-radius: 50%;
   padding: 50px 60px 50px 60px;
-`
-
-export const Span1 = styled.span`
+  span{
   font-size: 1.4rem;
   font-weight: bold;
+  }
 `
+

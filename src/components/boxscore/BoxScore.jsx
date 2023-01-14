@@ -7,7 +7,7 @@ import {
   CartesianGrid,
 } from 'recharts'
 import { formatterDataScore } from '../../utils/formatData'
-import {BoxRadialBarChart,TitleScore2,LegendOut,Span1} from './boxscore.style'
+import {BoxRadialBarChart, LegendOut} from './boxscore.style'
 
 /** render Graphiq RadialBarChart Recharts of Score
  * @param  {array} dataUser
@@ -19,9 +19,9 @@ export default function BoxScore({ dataUser }) {
 
   return (
     <BoxRadialBarChart>
-      <TitleScore2>Score</TitleScore2>
+      <h2>Score</h2>
       <LegendOut>
-        <Span1>{labelPourcent}%</Span1>
+        <span>{labelPourcent}%</span>
         <br />
         de vos objectif
       </LegendOut>
