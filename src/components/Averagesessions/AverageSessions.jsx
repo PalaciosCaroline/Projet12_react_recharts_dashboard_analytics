@@ -6,7 +6,7 @@ import {LegendTitle,BoxTooltipTag,SpanTooltip,BoxLineChart} from './averagesessi
 /** render Graphiq LineChart Recharts of average sessions 
   * @param  {AverageSessions} function Component
   * @param  {userAverageSessions} array
-  * @return {JSX}
+  * @return {JSX FC}
   */
 
 export default function AverageSessions({userAverageSessions}) {
@@ -43,10 +43,14 @@ export default function AverageSessions({userAverageSessions}) {
       <XAxis dataKey="day" padding={{right:10, left:10}} stroke="rgba(255,255,255,0.6" axisLine={false}
             dy={-10}
             tickLine={false}/>
-      <YAxis  dataKey="sessionLength" hide={true} domain={['dataMin - 5', 'dataMax']}/>
+      <YAxis  dataKey="sessionLength" hide={true} domain={['dataMin - 3', 'dataMax + 10']}/>
       <Tooltip offset={23} 
                content={<TooltipTagAverageSessions/>}
-               wrapperStyle={{ background: '#fff', width: '39px', height:'25px', color:'#000' , outline:"none"}} />
+               wrapperStyle={{ background: '#fff', width: '39px', height:'25px', color:'#000' , outline:"none"}} 
+               cursor={{
+                stroke: "transparent"
+                
+              }}/>
       <Line type="monotone" 
             dataKey="sessionLength" stroke="rgba(255,255,255,0.6" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
     
