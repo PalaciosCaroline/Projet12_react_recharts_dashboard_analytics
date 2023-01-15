@@ -4,7 +4,7 @@ import {Keyfigure,Img,Title3} from './keyfigurecard.style'
 
 /** 
  * @param  {string} type
- * @param  {tring} value
+ * @param  {string} value
  * @typeof  {Array} getImg 
  * @param  {img} let item of getImg
  * @return {JSX FC}

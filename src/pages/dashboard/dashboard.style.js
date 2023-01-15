@@ -11,7 +11,7 @@ margin: auto;
 heigth: 100%;
 max-width:1700px;
 @media (max-width: 1400px) {
-  padding: 40px 50px 50px 63px;
+  padding: 40px 50px 50px 63px; 
 }
 @media (max-width: 1250px) {
   padding: 40px 70px 50px 107px;
