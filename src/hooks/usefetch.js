@@ -80,25 +80,25 @@ const api = axios.create({
  */
 export const getData = async (id, type) => {
   try {
-    let res = {}
+    let result = {}
     switch (type) {
       case "activity":
-        res = await api.get(`http://localhost:3000/user/${id}/activity`);
+        result = await api.get(`http://localhost:3000/user/${id}/activity`);
       break;
       case "averageSessions":
-        res = await api.get(`http://localhost:3000/user/${id}/average-sessions`);
+        result = await api.get(`http://localhost:3000/user/${id}/average-sessions`);
       break;
       case "performance":
-        res = await api.get(`http://localhost:3000/user/${id}/performance`);
+        result = await api.get(`http://localhost:3000/user/${id}/performance`);
       break;
       case "mainInfos":
-        res = await api.get(`http://localhost:3000/user/${id}`);
+        result = await api.get(`http://localhost:3000/user/${id}`);
       break;
       default: 
-      return res = null;
+      return result = null;
     }
-    return res.data;
-  } catch (e) {
-    console.log(e);
+    return result.data;
+  } catch (error) {
+    console.log('error', error);
   }
 }

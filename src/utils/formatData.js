@@ -96,7 +96,7 @@ export function formatDataActivity(data) {
         let day = parseInt(data[i].day.split('-')[2]);
           data[i].day = day; 
       }
-      return data;
+    return data;
 }
 
 /** Formatter data of KeyfigureCard functional component

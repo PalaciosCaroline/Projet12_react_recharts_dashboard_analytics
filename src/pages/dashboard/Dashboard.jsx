@@ -52,9 +52,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     const data = async () => {
-      const request = await getData(id, 'mainInfos')
-      if (!request) return alert( 'Une erreur s\'est produite lors de la récupération des données générales')
-      setUserInfos(request.data)
+      const res = await getData(id, 'mainInfos')
+      if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données générales')
+      setUserInfos(res.data)
     }
     data()
   }, [id])
@@ -104,7 +104,7 @@ export default function Dashboard() {
         <Column1>
           <DailyActivity userActivity={userActivity} />
           <SessionWrapper>
-            <AverageSessions userAverageSessions={userAverageSessions} />
+            <AverageSessions id='boxLine' userAverageSessions={userAverageSessions} />
             <BoxRadar userPerformance={userPerformance} />
             <BoxScore dataUser={userInfos} />
           </SessionWrapper>

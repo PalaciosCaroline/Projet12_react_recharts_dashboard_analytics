@@ -61,16 +61,19 @@ export const TagCalories = styled.div`
 
 export const BoxTooltipTag = styled.div`
     font-size:0.5rem;
+    height:100%;
     text-align : center;
-    padding:8px 0 8px 0;
-    
+    padding:12px 0 12px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   `
 
-export const SpanTooltip1 = styled.div`
-    height:50%;
-  `
-export const SpanTooltip2 = styled.div`
-    height:50%;
-  `
+// export const SpanTooltip1 = styled.div`
+//     // height:50%;
+//   `
+// export const SpanTooltip2 = styled.div`
+//     // height:50%;
+//   `
  
   

@@ -23,33 +23,29 @@ export default function AverageSessions({userAverageSessions}) {
           return;
         }
   }
-
-  const animateBgColor = (e) => {
-    let boxContainer = document.querySelector('.a-DYnx')
-    if (e.isTooltipActive === true) {
-      let windowWidth = boxContainer.clientWidth
-      let mouseXpercentage = Math.round(
-        (e.activeCoordinate.x / windowWidth) * 100
-      )
-      boxContainer.style.background = `linear-gradient(90deg, hsla(0, 100%, 50%, 1)
-      ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) 100%)`
-    } else {
-      boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
-    }
-  }
-
-  const stopAnimateBgColor = () => {
-    let boxContainer = document.querySelector('.a-DYnx')
-    boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
-  }
   
   return (
-    <BoxLineChart>
+    <BoxLineChart id='boxline'>
       <LegendTitle>Durée moyenne des<br/> sessions</LegendTitle>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-        onMouseMove={(e) => {animateBgColor(e)}}
-        onMouseLeave={() => {stopAnimateBgColor()}}
+        onMouseMove={(e) => { 
+          if (e.isTooltipActive === true) {
+            let boxContainer = document.querySelector('#boxline')
+            let windowWidth = boxContainer.clientWidth
+            let mouseXpercentage = Math.round(
+              (e.activeCoordinate.x / windowWidth) * 100
+            )
+            boxContainer.style.background = `linear-gradient(90deg, hsla(0, 100%, 50%, 1)
+            ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) 100%)`
+          } else {
+            let boxContainer = document.querySelector('#boxline')
+            boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
+        }}}
+          onMouseLeave={() => {
+            let boxContainer = document.querySelector('#boxline')
+            boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
+          }}
           width={200}
           height={200}
           data={userAverageSessions}

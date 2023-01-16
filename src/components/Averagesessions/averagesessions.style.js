@@ -2,7 +2,7 @@ import { palette } from '../../theme/styledvariable'
 import styled from 'styled-components'
 
 
-export const BoxLineChart = styled.article`
+export const BoxLineChart = styled.div`
   background-color: ${palette.colorSecondary};
   color:#fff;
   width:263px;
