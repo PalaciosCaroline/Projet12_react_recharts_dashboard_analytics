@@ -76,7 +76,7 @@ const api = axios.create({
 /** function de récupération des données de l'api
  * @param {string} id 
  * @param {string} type 
- * @returns {promise} res.data
+ * @returns {promise} res.data.data
  */
 export const getData = async (id, type) => {
   try {
@@ -97,7 +97,7 @@ export const getData = async (id, type) => {
       default: 
       return result = null;
     }
-    return result.data;
+    return result.data.data;
   } catch (error) {
     console.log('error', error);
   }

@@ -25,13 +25,13 @@ export default function AverageSessions({userAverageSessions}) {
   }
   
   return (
-    <BoxLineChart id='boxline'>
+    <article className='boxline'>
       <LegendTitle>Durée moyenne des<br/> sessions</LegendTitle>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
         onMouseMove={(e) => { 
           if (e.isTooltipActive === true) {
-            let boxContainer = document.querySelector('#boxline')
+            let boxContainer = document.querySelector('.boxline')
             let windowWidth = boxContainer.clientWidth
             let mouseXpercentage = Math.round(
               (e.activeCoordinate.x / windowWidth) * 100
@@ -39,11 +39,11 @@ export default function AverageSessions({userAverageSessions}) {
             boxContainer.style.background = `linear-gradient(90deg, hsla(0, 100%, 50%, 1)
             ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) ${mouseXpercentage}%, hsla(0, 80%, 50%, 1) 100%)`
           } else {
-            let boxContainer = document.querySelector('#boxline')
+            let boxContainer = document.querySelector('.boxline')
             boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
         }}}
           onMouseLeave={() => {
-            let boxContainer = document.querySelector('#boxline')
+            let boxContainer = document.querySelector('.boxline')
             boxContainer.style.background = 'hsla(0, 100%, 50%, 1)'
           }}
           width={200}
@@ -69,7 +69,7 @@ export default function AverageSessions({userAverageSessions}) {
                 dataKey="sessionLength" stroke="rgba(255,255,255,0.6" strokeWidth={2} dot={false} activeDot={{ r: 3,stroke: "#fff", fill:"#fff"}}/>
         </LineChart>
       </ResponsiveContainer>
-    </BoxLineChart>
+    </article>
   )
 }
 

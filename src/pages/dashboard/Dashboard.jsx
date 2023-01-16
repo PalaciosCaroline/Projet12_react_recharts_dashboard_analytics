@@ -54,7 +54,7 @@ export default function Dashboard() {
     const data = async () => {
       const res = await getData(id, 'mainInfos')
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données générales')
-      setUserInfos(res.data)
+      setUserInfos(res)
     }
     data()
   }, [id])
@@ -63,7 +63,7 @@ export default function Dashboard() {
     const averageSessions = async () => {
       const res = await getData(id, 'averageSessions')
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de durée moyenne des sessions')
-      const data = formatDataAverageSessions(res.data.sessions)
+      const data = formatDataAverageSessions(res.sessions)
       setUserAverageSessions(data)
     }
     averageSessions()
@@ -73,7 +73,7 @@ export default function Dashboard() {
     const performance = async () => {
       const res = await getData(id, 'performance')
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de performance')
-      const data = formatDataPerformance(res.data.data)
+      const data = formatDataPerformance(res.data)
       setUserPerformance(data)
     }
     performance()
@@ -83,13 +83,13 @@ export default function Dashboard() {
     const activity = async () => {
       const res = await getData(id, 'activity')
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données sur l\'activité quotidienne')
-      const data = formatDataActivity(res.data.sessions)
+      const data = formatDataActivity(res.sessions)
       setUserActivity(data)
     }
     activity()
   }, [id])
 
-  if (userInfos.length === 0) return null
+  if (userInfos.length <= 0) return null
   let valueKilo = formatKilo(userInfos.keyData.calorieCount)
 
   return (
@@ -104,7 +104,7 @@ export default function Dashboard() {
         <Column1>
           <DailyActivity userActivity={userActivity} />
           <SessionWrapper>
-            <AverageSessions id='boxLine' userAverageSessions={userAverageSessions} />
+            <AverageSessions userAverageSessions={userAverageSessions} />
             <BoxRadar userPerformance={userPerformance} />
             <BoxScore dataUser={userInfos} />
           </SessionWrapper>
@@ -114,17 +114,17 @@ export default function Dashboard() {
           <KeyfigureCard
             img={proteinIcon}
             type="Protéines"
-            value={`${userInfos.keyData.proteinCount.toString()}g`}
+            value={`${userInfos.keyData.proteinCount}g`}
           />
           <KeyfigureCard
             img={carbsIcon}
             type="Glucides"
-            value={`${userInfos.keyData.carbohydrateCount.toString()}g`}
+            value={`${userInfos.keyData.carbohydrateCount}g`}
           />
           <KeyfigureCard
             img={fatIcon}
             type="Lipides"
-            value={`${userInfos.keyData.lipidCount.toString()}g`}
+            value={`${userInfos.keyData.lipidCount}g`}
           />
         </Keyfigures>
       </BoxResult>
@@ -143,7 +143,7 @@ Dashboard.propTypes = {
   userActivity: PropTypes.object,
   userAverageSessions: PropTypes.object,
   formatterKilo: PropTypes.func,
-  valueKilo: PropTypes.string,
+  valueKilo: PropTypes.any,
   data: PropTypes.object,
   labelPourcent: PropTypes.number,
 }

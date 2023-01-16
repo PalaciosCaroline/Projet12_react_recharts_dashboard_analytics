@@ -4,7 +4,7 @@ import {Keyfigure,Img,Title3} from './keyfigurecard.style'
 
 /** 
  * @param  {string} type
- * @param  {string} value
+ * @param  {any} value
  * @typeof  {Array} getImg 
  * @param  {img} let item of getImg
  * @return {JSX FC}
@@ -25,6 +25,6 @@ export default function KeyfigureCard({img, type, value}) {
 KeyfigureCard.propTypes = {
   img : PropTypes.any,
   type: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.any,
 }
 
