@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import {LegendTitle,BoxTooltipTag,SpanTooltip,BoxLineChart} from './averagesessions.style'
+import {LegendTitle,BoxTooltipTag,SpanTooltip} from './averagesessions.style'
 
 /** render Graphiq LineChart Recharts of average sessions 
   * @param  {AverageSessions} function Component
