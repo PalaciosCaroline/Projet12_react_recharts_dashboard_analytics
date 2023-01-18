@@ -1,7 +1,7 @@
-# Project 12 - Openclassrooms
+# Project 12 - Dashboard analytics with React and graphism with Recharts.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This repo contains the source code to run with the micro API in my repository P12-Back-end. This project is the sports analytics dashboard SportSee.
+This repo contains the source code to run with the datas of the micro API in my repository P12-Back-end. This project is the sports analytics dashboard SportSee.
 
 ### Prerequisites
 
