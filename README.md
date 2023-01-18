@@ -17,9 +17,9 @@ If you are working with several versions of NodeJS, we recommend you install [nv
 - The `npm install` command will allow you to install the dependencies.
 
 ## In the second part, Install and run the back-end - Repository : P12-Back-end => for get datas display in this project.
-Clone the directory : 
+- Clone the directory : 
 P12-Back-end : git clone https://github.com/PalaciosCaroline/P12-Back-end.git
-Then follow the steps marked in its readme file.
+- Then follow the steps marked in its readme file.
 
 ## In the third part, run this project :
 
