@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 // import { getUserInfosById } from '../mock/ApiData.mock'
-import { useApi, getData } from '../../hooks/usefetch'
+import { getData } from '../../hooks/usefetch'
 import { useParams } from 'react-router'
 import KeyfigureCard from '../../components/keyfigurecard/KeyfigureCard'
 import DailyActivity from '../../components/dailyactivity/DailyActivity'
