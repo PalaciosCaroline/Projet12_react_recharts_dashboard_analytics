@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatDataActivity} from '../../utils/formatData'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { BoxBarChart,TitleLegendActivity,LegendBox,TagPoids,TagCalories,BoxTooltipTag} from './dailyactivity.style'
 
@@ -10,11 +11,12 @@ import { BoxBarChart,TitleLegendActivity,LegendBox,TagPoids,TagCalories,BoxToolt
   * @param  {Array} userActivity
   * @return {JSX FC React}
   */
-export default function DailyActivity({userActivity}) {
+export default function DailyActivity({dataActivity}) {
 
-  if (userActivity.length === 0) return null;
+  if (!dataActivity) return null;
+  const userActivity = formatDataActivity(dataActivity.sessions)
 
-    const TooltipTag = ({active,payload}) => {
+  const TooltipTag = ({active,payload}) => {
 
           if(active){
              return(
@@ -68,7 +70,7 @@ export default function DailyActivity({userActivity}) {
   }
 
   DailyActivity.propTypes = {
-    userActivity : PropTypes.array,
+    userActivity : PropTypes.object,
     formatterDataScore : PropTypes.func,
     TooltipTag : PropTypes.element,
     data : PropTypes.object,

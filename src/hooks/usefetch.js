@@ -1,35 +1,61 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-const api = axios.create({
-  baseURL: `http://localhost:3000`
-});
-
-/** function get to datas of API
- * @param {string} id 
- * @param {string} type 
- * @returns {promise} res.data.data
+/**
+ * Hook for get data to API.
+ * @param {string} service
+ * @param {string} id
+ * @returns {Object}
  */
-export const getData = async (id, type) => {
-  try {
-    let result = {}
-    switch (type) {
-      case "activity":
-        result = await api.get(`http://localhost:3000/user/${id}/activity`);
+export default function useFetch(id,service) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(null);
+  const [error, setError] = useState(null);
+
+  let url = getUrl(id,service);
+  
+  useEffect(() => {
+      setLoading('loading...')
+      setData(null);
+      setError(null);
+      axios.get(url)
+      .then(res => {
+          setLoading(false);
+          setData(res.data.data); 
+      })
+      .catch(err => {
+          setLoading(false)
+          setError(`An error ${err} occurred on fetch with ${service}`)
+          console.log(error)
+      })
+      
+  }, [error, service, url])
+
+  return { data, loading, error }
+}
+
+/** get url for Hook useFetch
+ * @param {string} service 
+ * @param {string} id 
+ * @returns {string} url 
+ */
+function getUrl(id, service) {
+  let url;
+  switch (service) {
+    case "userInfos":
+      url = `http://localhost:3000/user/${id}`;
       break;
-      case "averageSessions":
-        result = await api.get(`http://localhost:3000/user/${id}/average-sessions`);
+    case "performance":
+      url = `http://localhost:3000/user/${id}/performance`;
       break;
-      case "performance":
-        result = await api.get(`http://localhost:3000/user/${id}/performance`);
+    case "averageSessions":
+      url = `http://localhost:3000/user/${id}/average-sessions`;
       break;
-      case "mainInfos":
-        result = await api.get(`http://localhost:3000/user/${id}`);
+    case "activity":
+      url = `http://localhost:3000/user/${id}/activity`;
       break;
-      default: 
-      return result = null;
-    }
-    return result.data.data;
-  } catch (error) {
-    console.log('error', error);
+    default:
+      return null;
   }
+  return url;
 }

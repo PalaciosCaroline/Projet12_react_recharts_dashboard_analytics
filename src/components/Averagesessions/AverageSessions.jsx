@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatDataAverageSessions } from '../../utils/formatData'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import {LegendTitle,BoxTooltipTag,SpanTooltip} from './averagesessions.style'
 
@@ -8,9 +9,10 @@ import {LegendTitle,BoxTooltipTag,SpanTooltip} from './averagesessions.style'
   * @param  {userAverageSessions} array
   * @return {JSX FC}
   */
-export default function AverageSessions({userAverageSessions}) {
+export default function AverageSessions({dataAverageSessions}) {
 
-  if (userAverageSessions.length == null) return null;
+  if (!dataAverageSessions) return null;
+  const userAverageSessions = formatDataAverageSessions(dataAverageSessions.sessions)
 
   const TooltipTagAverageSessions = ({active,payload}) => {
     if(active){
