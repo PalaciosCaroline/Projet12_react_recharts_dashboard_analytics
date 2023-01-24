@@ -40,19 +40,20 @@ export default function useFetch(id,service) {
  * @returns {string} url 
  */
 function getUrl(id, service) {
+  let base_url = 'http://localhost:3000/user/'
   let url;
   switch (service) {
     case "userInfos":
-      url = `http://localhost:3000/user/${id}`;
+      url = `${base_url}${id}`;
       break;
     case "performance":
-      url = `http://localhost:3000/user/${id}/performance`;
+      url = `${base_url}${id}/performance`;
       break;
     case "averageSessions":
-      url = `http://localhost:3000/user/${id}/average-sessions`;
+      url = `${base_url}${id}/average-sessions`;
       break;
     case "activity":
-      url = `http://localhost:3000/user/${id}/activity`;
+      url = `${base_url}${id}/activity`;
       break;
     default:
       return null;
