@@ -76,6 +76,7 @@ export default function AverageSessions({dataAverageSessions}) {
 }
 
 AverageSessions.propTypes = {
+  dataAverageSessions : PropTypes.object,
   userAverageSessions : PropTypes.array,
   TooltipTagAverageSessions : PropTypes.element,
   active: PropTypes.bool,
