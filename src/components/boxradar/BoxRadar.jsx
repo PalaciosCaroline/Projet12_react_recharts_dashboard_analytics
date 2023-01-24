@@ -11,7 +11,7 @@ import {BoxRadarChart} from './boxradar.style'
 import {formatDataPerformance} from '../../utils/formatData'
 
 /** render Graphiq RadarChart Recharts of performance
- * @param  {Array} userPerformance
+ * @param  {object} dataPerformance
  * @return {JSX FC React}
  */
 export default function BoxRadar({dataPerformance}) {

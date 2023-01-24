@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 // import { getUserInfosById } from '../mock/ApiData.mock'
-import useFetch, { getData } from '../../hooks/usefetch'
+import useFetch from '../../hooks/usefetch'
 import { useParams,  } from 'react-router'
 import KeyfigureCard from '../../components/keyfigurecard/KeyfigureCard'
 import DailyActivity from '../../components/dailyactivity/DailyActivity'
@@ -20,7 +19,7 @@ import {Keyfigures,SessionWrapper,Column1,BoxResult,BoxTitle,Wrapped} from './da
  * @param { type } string
  * @type {FC React} BoxScore,BoxScore,AverageSessions, DailyActivity, KeyfigureCard
  * @type {function(id:string, type:string) => promise} getData
- * @type {object} userInfos userPerformance userAverageSessions userActivity
+ * @type {object} dataInfos dataPerformance dataAverageSessions dataActivity
  * @type {function} formatDataPerformance, formatDataAverageSessions, formatDataActivity, * *        formatKilofunction JS
  * @return {JSX FC React}
  */

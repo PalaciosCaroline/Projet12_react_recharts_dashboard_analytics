@@ -6,7 +6,7 @@ import {LegendTitle,BoxTooltipTag,SpanTooltip} from './averagesessions.style'
 
 /** render Graphiq LineChart Recharts of average sessions 
   * @param  {AverageSessions} function Component
-  * @param  {userAverageSessions} array
+  * @param  {dataAverageSessions} object
   * @return {JSX FC}
   */
 export default function AverageSessions({dataAverageSessions}) {

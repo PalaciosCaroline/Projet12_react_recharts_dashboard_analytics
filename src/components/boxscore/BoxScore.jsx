@@ -10,7 +10,7 @@ import { formatDataScore } from '../../utils/formatData'
 import {BoxRadialBarChart, LegendOut} from './boxscore.style'
 
 /** render Graphiq RadialBarChart Recharts of Score
- * @param  {array} dataUser
+ * @param  {object} dataUser
  * @type  {function} formatterDataScore
  * @return {JSX FC}
  */

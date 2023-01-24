@@ -8,7 +8,7 @@ import { BoxBarChart,TitleLegendActivity,LegendBox,TagPoids,TagCalories,BoxToolt
   * @type  {JSX FC React} TooltipTag
   * @param {boolean} active
   * @param {Array} payload
-  * @param  {Array} userActivity
+  * @param  {object} dataActivity
   * @return {JSX FC React}
   */
 export default function DailyActivity({dataActivity}) {
