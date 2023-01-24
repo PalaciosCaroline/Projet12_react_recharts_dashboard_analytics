@@ -105,7 +105,6 @@ export function formatDataActivity(data) {
   * @return {str => string} with new formatter (with ',' for kilo)
   */
 export function formatKilo(value){
-    // let data = new Intl.NumberFormat("en-IN", {style: "decimal", maximumFractionDigits: 0}.format(value));
         var str = value.toString().split(".");
         str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return str.join(".");    
