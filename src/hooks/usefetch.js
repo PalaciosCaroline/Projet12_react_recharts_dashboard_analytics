@@ -1,4 +1,3 @@
-import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 export const callApiWithAxios = async ({
