@@ -35,20 +35,6 @@ export default function Dashboard() {
   const [userAverageSessions, setUserAverageSessions] = useState([])
   const [userActivity, setUserActivity] = useState([])
   let { id } = useParams()
-  //id = parseInt(id)
-
-  // const user = () => {
-  //   const routeParams = useParams();
-  // };
-
-  // const { data: dataUser } = useApi({
-  //   params: {
-  //     userId : `${id}`
-  //   },
-  //   defaultValue: { results: [] }
-  // });
-
-  //   console.log(dataUser.data.userInfos)
 
   useEffect(() => {
     const data = async () => {
