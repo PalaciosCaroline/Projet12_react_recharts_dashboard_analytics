@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatDataAverageSessions } from '../../utils/formatData'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import {LegendTitle,BoxTooltipTag,SpanTooltip} from './averagesessions.style'
 
 /** render Graphiq LineChart Recharts of average sessions 
   * @param  {AverageSessions} function Component
-  * @param  {dataAverageSessions} object
+  * @param  {userAverageSessions} array
   * @return {JSX FC}
   */
-export default function AverageSessions({dataAverageSessions}) {
+export default function AverageSessions({userAverageSessions}) {
 
-  if (!dataAverageSessions) return null;
-  const userAverageSessions = formatDataAverageSessions(dataAverageSessions.sessions)
+  if (userAverageSessions.length == null) return null;
 
   const TooltipTagAverageSessions = ({active,payload}) => {
     if(active){
@@ -76,7 +74,6 @@ export default function AverageSessions({dataAverageSessions}) {
 }
 
 AverageSessions.propTypes = {
-  dataAverageSessions : PropTypes.object,
   userAverageSessions : PropTypes.array,
   TooltipTagAverageSessions : PropTypes.element,
   active: PropTypes.bool,

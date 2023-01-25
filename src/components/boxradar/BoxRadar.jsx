@@ -8,16 +8,13 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import {BoxRadarChart} from './boxradar.style'
-import {formatDataPerformance} from '../../utils/formatData'
 
 /** render Graphiq RadarChart Recharts of performance
- * @param  {object} dataPerformance
+ * @param  {Array} userPerformance
  * @return {JSX FC React}
  */
-export default function BoxRadar({dataPerformance}) {
-
-  if (!dataPerformance) return null
-  let userPerformance = formatDataPerformance(dataPerformance.data)
+export default function BoxRadar({ userPerformance }) {
+  if (userPerformance.length <= 0) return null
 
   return (
     <BoxRadarChart>
@@ -44,8 +41,7 @@ export default function BoxRadar({dataPerformance}) {
 }
 
 BoxRadar.propTypes = {
-  dataPerformance: PropTypes.object,
-  userPerformance: PropTypes.object,
+  userPerformance: PropTypes.array,
   king: PropTypes.string,
   value: PropTypes.number,
 }

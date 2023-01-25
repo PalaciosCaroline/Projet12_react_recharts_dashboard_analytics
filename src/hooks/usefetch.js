@@ -1,62 +1,62 @@
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 
-/**
- * Hook for get data to API.
- * @param {string} service
- * @param {string} id
- * @returns {Object}
- */
-export default function useFetch(id,service) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(null);
-  const [error, setError] = useState(null);
+export const callApiWithAxios = async ({
+  method = "get",
+  apiUrl = "http://localhost:3000/user",
+  userId,
+  namespace,
+  payload,
+  headers: passedHeaders
+}) => {
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+      ...passedHeaders
+    }
+  };
+  const path = [apiUrl, userId, namespace].filter(Boolean).join("/");
+  return await axios({
+    method,
+    url: path,
+    data: payload,
+    headers: config.headers
+  });
+};
 
-  let url = getUrl(id,service);
-  
-  useEffect(() => {
-      setLoading('loading...')
-      setData(null);
-      setError(null);
-      axios.get(url)
-      .then(res => {
-          setLoading(false);
-          setData(res.data.data); 
-      })
-      .catch(err => {
-          setLoading(false)
-          setError(`An error ${err} occurred on fetch with ${service}`)
-          console.log(error)
-      })
-      
-  }, [error, service, url])
 
-  return { data, loading, error }
-}
 
-/** get url for Hook useFetch
- * @param {string} service 
+//Appel actuelle à l'api
+const api = axios.create({
+  baseURL: `http://localhost:3000`
+});
+
+/** function de récupération des données de l'api
  * @param {string} id 
- * @returns {string} url 
+ * @param {string} type 
+ * @returns {promise} res.data.data
  */
-function getUrl(id, service) {
-  let base_url = 'http://localhost:3000/user/'
-  let url;
-  switch (service) {
-    case "userInfos":
-      url = `${base_url}${id}`;
+export const getData = async (id, type) => {
+  try {
+    let result = {}
+    switch (type) {
+      case "activity":
+        result = await api.get(`http://localhost:3000/user/${id}/activity`);
       break;
-    case "performance":
-      url = `${base_url}${id}/performance`;
+      case "averageSessions":
+        result = await api.get(`http://localhost:3000/user/${id}/average-sessions`);
       break;
-    case "averageSessions":
-      url = `${base_url}${id}/average-sessions`;
+      case "performance":
+        result = await api.get(`http://localhost:3000/user/${id}/performance`);
       break;
-    case "activity":
-      url = `${base_url}${id}/activity`;
+      case "mainInfos":
+        result = await api.get(`http://localhost:3000/user/${id}`);
       break;
-    default:
-      return null;
+      default: 
+      return result = null;
+    }
+    return result.data.data;
+  } catch (error) {
+    console.log('error', error);
   }
-  return url;
 }
