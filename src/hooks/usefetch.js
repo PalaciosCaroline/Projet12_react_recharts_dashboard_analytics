@@ -1,30 +1,5 @@
 import axios from "axios";
 
-export const callApiWithAxios = async ({
-  method = "get",
-  apiUrl = "http://localhost:3000/user",
-  userId,
-  namespace,
-  payload,
-  headers: passedHeaders
-}) => {
-  const config = {
-    headers: {
-      "Content-type": "application/json",
-      ...passedHeaders
-    }
-  };
-  const path = [apiUrl, userId, namespace].filter(Boolean).join("/");
-  return await axios({
-    method,
-    url: path,
-    data: payload,
-    headers: config.headers
-  });
-};
-
-
-
 //Appel actuelle à l'api
 const api = axios.create({
   baseURL: `http://localhost:3000`
