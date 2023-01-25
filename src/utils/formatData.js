@@ -5,8 +5,8 @@
   * @return {{value: number, king: string} => object} formatData with value of props king formatter 
   */ 
 export function formatDataPerformance(data){
-    // const InverseDataKing = data.sort((a, b) => (b.king > a.king ? 1 : -1))
-    const formatData = data.map((data) => { 
+    const InverseDataKing = data.sort((a, b) => (b.king > a.king ? 1 : -1))
+    const formatData = InverseDataKing.map((data) => { 
         switch (data.kind) {
             case 1:
                 return { ...data, kind: 'Cardio' };
@@ -105,6 +105,7 @@ export function formatDataActivity(data) {
   * @return {str => string} with new formatter (with ',' for kilo)
   */
 export function formatKilo(value){
+    // let data = new Intl.NumberFormat("en-IN", {style: "decimal", maximumFractionDigits: 0}.format(value));
         var str = value.toString().split(".");
         str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return str.join(".");    
