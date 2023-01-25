@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-// import { getUserInfosById } from '../mock/ApiData.mock'
-import { useApi, getData } from '../../hooks/usefetch'
+import { getUserActivityById, getUserPerformance,getUserAverageSession,getUserById } from './../../mock/ApiData.mock'
+import { getData } from '../../hooks/usefetch'
 import { useParams } from 'react-router'
 import KeyfigureCard from '../../components/keyfigurecard/KeyfigureCard'
 import DailyActivity from '../../components/dailyactivity/DailyActivity'
@@ -35,10 +35,14 @@ export default function Dashboard() {
   const [userAverageSessions, setUserAverageSessions] = useState([])
   const [userActivity, setUserActivity] = useState([])
   let { id } = useParams()
+  id = parseInt(id)
 
   useEffect(() => {
     const data = async () => {
-      const res = await getData(id, 'mainInfos')
+      //call to API
+      // const res = await getData(id, 'mainInfos')
+      //call to datas mocked
+        const res = await getUserById(id)
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données générales')
       setUserInfos(res)
     }
@@ -47,7 +51,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     const averageSessions = async () => {
-      const res = await getData(id, 'averageSessions')
+      //call to api
+      // const res = await getData(id, 'averageSessions')
+      //call to datas mocked
+      const res = await getUserAverageSession(id)
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de durée moyenne des sessions')
       const data = formatDataAverageSessions(res.sessions)
       setUserAverageSessions(data)
@@ -57,7 +64,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     const performance = async () => {
-      const res = await getData(id, 'performance')
+      //call to api
+      // const res = await getData(id, 'performance')
+      //call to datas mocked
+        const res = await getUserPerformance(id)
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données de performance')
       const data = formatDataPerformance(res.data)
       setUserPerformance(data)
@@ -67,13 +77,17 @@ export default function Dashboard() {
 
   useEffect(() => {
     const activity = async () => {
-      const res = await getData(id, 'activity')
+      //call to api
+      // const res = await getData(id, 'activity')
+      //call to datas mocked
+      const res = await getUserActivityById(id)
       if (!res) return alert( 'Une erreur s\'est produite lors de la récupération des données sur l\'activité quotidienne')
       const data = formatDataActivity(res.sessions)
       setUserActivity(data)
     }
     activity()
   }, [id])
+
 
   if (userInfos.length <= 0) return null
   let valueKilo = formatKilo(userInfos.keyData.calorieCount)
