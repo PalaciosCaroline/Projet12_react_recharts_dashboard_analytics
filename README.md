@@ -44,9 +44,8 @@ Pour voir le résultat du site web mis en ligne, rendez-vous sur [Dashboard anal
 @@ Exemple: Image of site @@
 ```
 
-![Dashboard analytics](./imgprojet7.png "Dashboard analytics")
+![Dashboard analytics](./img_projet12.png "Dashboard analytics")
 
-![Dashboard analytics](./imgprojet7_2.png "Dashboard analytics")
 
 ***********************************************************************************************************************************************************************
 
