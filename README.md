@@ -1,6 +1,7 @@
 # Project 12 - Dashboard analytics with React and graphism with Recharts.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center">Projet dans le cadre de la formation développeur d'application JavaScript React</h2> 
+
 This repo contains the source code to run with the datas of the micro API in my repository P12-Back-end. This project is the sports analytics dashboard SportSee.
 
 ### Prerequisites
@@ -32,6 +33,22 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+
+Pour voir le résultat du site web mis en ligne, rendez-vous sur [Dashboard analytics](https://projet11-palcaroline28-gmailcom.vercel.app/projet12)
+
+
+***********************************************************************************************************************************************************************
+
+```diff	
+@@ Exemple: Image of site @@
+```
+
+![Dashboard analytics](./imgprojet7.png "Dashboard analytics")
+
+![Dashboard analytics](./imgprojet7_2.png "Dashboard analytics")
+
+***********************************************************************************************************************************************************************
 
 ### `npm run build`
 
